@@ -12,12 +12,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1em;
   font-size: clamp(.5rem, 2.5vmin, 1.5rem);
   vertical-align: middle;
-  overflow-y: hidden;
 }
 
 #title {
@@ -27,7 +25,6 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
   width: 50%;
 }
 
@@ -38,7 +35,6 @@ body {
   gap: .25em;
   justify-content: center;
   align-self: center;
-  width: 100%;
   position: fixed; 
   bottom:2%;
   width:100%;
@@ -111,6 +107,8 @@ body {
   text-align: center;
   gap: 0.25em;
   vertical-align: middle;
+  margin-bottom: 20vh;
+
 }
 
 /*
