@@ -38,9 +38,8 @@ body {
   gap: .25em;
   justify-content: center;
   align-self: center;
-  position: fixed; 
-  bottom:2%;
-  width:100%;
+  margin-bottom: auto;
+  width: 100%;
 }
 
 .key {
@@ -110,7 +109,6 @@ body {
   text-align: center;
   gap: 0.25em;
   vertical-align: middle;
-  margin-bottom: 20vh;
 
 }
 
