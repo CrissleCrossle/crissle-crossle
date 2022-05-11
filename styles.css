@@ -16,6 +16,8 @@ body {
   padding: 1em;
   font-size: clamp(.5rem, 2.5vmin, 1.5rem);
   vertical-align: middle;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 #title {
@@ -26,6 +28,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  margin-top: 1em;
 }
 
 .keyboard {
