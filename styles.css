@@ -34,6 +34,7 @@ body {
   grid-auto-rows: 3em;
   gap: .25em;
   justify-content: center;
+  align-self: center;
   position: fixed; 
   bottom:2%;
   width:100%;
@@ -287,3 +288,17 @@ body {
 .alert.hide {
   opacity: 0;
 }
+
+@media only screen and (max-width: 100vh) {
+  .keyboard {
+    width: 100%;
+    grid-row-gap: .75em;
+    margin: 0%;
+  }
+  .key {
+    padding: 1.75em;
+  }
+  #title {
+    width: 80%;
+  }
+  }
