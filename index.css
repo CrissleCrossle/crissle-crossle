@@ -1,0 +1,10 @@
+.grid {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto;
+    padding: 10px;
+    text-align: center;
+    gap: 0.25em;
+    vertical-align: middle;
+    margin-bottom: 0vh;
+  
+  }
