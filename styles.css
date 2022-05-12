@@ -1,3 +1,6 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+
 *, *::after, *::before {
   box-sizing: border-box;
   font-family: Arial;
@@ -18,17 +21,45 @@ body {
   vertical-align: middle;
   height: 100%;
   overflow-y: hidden;
+  justify-content: center;
+}
+
+#rules {
+  display: block;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  align-self: center;
+  text-align: center;
+  overflow-y: auto;
+  background-color: rgb(59, 59, 59);
+  color: white;
+
+}
+
+#top-bar {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-button {
+  font-size: 3em;
+  border: none;
+  text-decoration: none;
+  color: white;
 }
 
 #title {
   text-align: center;
   font-family: 'Lato', 'sans-serif';
   color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline;
   width: 50%;
-  margin-top: 1em;
+  height: 50%;
+  flex-grow: 0.5;
 }
 
 .keyboard {
@@ -300,8 +331,5 @@ body {
   }
   .key {
     padding: 1.75em;
-  }
-  #title {
-    width: 80%;
   }
   }
