@@ -1,8 +1,3 @@
-
-document.getElementById("how").onclick = () => {
-  console.log("what")
-}
-
 let tempInterfere = targetWords
 
 targetWord = targetWords[dayOffset]
