@@ -321,7 +321,7 @@ body {
   opacity: 0;
 }
 
-@media only screen and (max-width: 100vh) {
+@media only screen and (max-width: 120vh) {
   .keyboard {
     width: 100%;
     grid-row-gap: .75em;
