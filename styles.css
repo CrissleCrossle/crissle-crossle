@@ -53,13 +53,11 @@ body {
 }
 
 #title {
+  display: inline-grid;
+  grid-template-columns: repeat(14, auto);
   text-align: center;
-  font-family: 'Lato', 'sans-serif';
-  color: white;
-  display: inline;
-  width: 50%;
-  height: 50%;
-  flex-grow: 0.5;
+  gap: 0.25em;
+  vertical-align: middle;
 }
 
 .keyboard {
@@ -331,5 +329,8 @@ body {
   }
   .key {
     padding: 1.75em;
+  }
+  .tile.title {
+    font-size: 1em;
   }
   }
