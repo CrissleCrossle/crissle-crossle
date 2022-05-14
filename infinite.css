@@ -3,7 +3,7 @@
     grid-template-columns: repeat(22, auto);
   }
 
-@media only screen and (max-width: 100vh) {
+@media only screen and (max-width: 180vh) {
     #title {
         grid-template-columns: repeat(14, auto);
     }
