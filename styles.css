@@ -219,7 +219,7 @@ body {
 
 .tile[data-state="correct"] {
   border: none;
-  background-color: hsl(115, 29%, 43%);
+  background-color: rgb(83, 141, 78);
 }
 
 .tile[data-state="interfere"] {
