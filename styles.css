@@ -143,6 +143,13 @@ body {
 
 }
 
+.titlegrid {
+  grid-template-columns: auto auto auto auto auto auto auto;
+  margin-bottom: unset;
+
+}
+
+
 /*
 
 .guess-grid {
@@ -321,23 +328,23 @@ body {
   opacity: 0;
 }
 
-@media only screen and (max-width: 125vh) {
-  .tile.title {
-    font-size: 1.25em;
-  }
-  }
-
-
-@media only screen and (max-width: 115vh) {
-  .tile.title {
+@media only screen and (max-width: 130vh) {
+  .titlegrid {
     font-size: 1.15em;
+  }
+  }
+
+
+@media only screen and (max-width: 120vh) {
+  .titlegrid {
+    font-size: 1.1em;
   }
   }
   
 
-@media only screen and (max-width: 110vh) {
-  .tile.title {
-    font-size: 1.05em;
+@media only screen and (max-width: 115vh) {
+  .titlegrid {
+    font-size: 1em;
   }
   }
 
