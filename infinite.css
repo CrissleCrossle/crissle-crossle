@@ -1,13 +1,5 @@
 
 #title {
-    grid-template-columns: repeat(22, auto);
+    grid-template-columns: repeat(15, auto);
   }
 
-@media only screen and (max-width: 180vh) {
-    #title {
-        grid-template-columns: repeat(14, auto);
-    }
-    .tile.title {
-        display: inline;
-    }
-}
