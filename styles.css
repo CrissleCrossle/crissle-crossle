@@ -322,15 +322,31 @@ body {
 }
 
 @media only screen and (max-width: 120vh) {
-  .keyboard {
-    width: 100%;
-    grid-row-gap: .75em;
-    margin: 0%;
-  }
-  .key {
-    padding: 1.75em;
-  }
   .tile.title {
     font-size: 1em;
   }
   }
+
+@media only screen and (max-width: 95vh) {
+  .keyboard {
+    width: 100%;
+    grid-row-gap: .75em;
+    margin-bottom: 1em;
+  }
+  .key {
+    padding: 1.75em;
+  }
+}
+
+@media only screen and (max-width: 80vh) {
+    .keyboard {
+      grid-row-gap: 2.3em;
+    }
+    .key {
+      padding-right: 1.75em;
+      padding-left: 1.75em;
+      padding-top: 2.5em;
+      padding-bottom: 2.5em;
+  
+    }
+}
