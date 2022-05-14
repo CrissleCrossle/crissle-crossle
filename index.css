@@ -4,6 +4,16 @@ body {
 
 }
 
+p {
+    color: white;
+
+}
+
+h1 {
+    color: white;
+
+}
+
 .grid {
     display: inline-grid;
     grid-template-columns: auto auto auto auto auto;
