@@ -35,6 +35,7 @@ const dayOffset = Math.floor(msOffset / 1000 / 60 / 60 / 24)
 var targetWord = ""
 const interfereWords = []
 var saveAfterGuess = true
+var loading = false
 
 function setCharAt(str,index,chr) {
   if(index > str.length-1) return str;
@@ -43,15 +44,20 @@ function setCharAt(str,index,chr) {
 
 function loadGame(game) {
 
+  loading = true
+
   for (let c = 0; c < game.length; c += 5) {
     for (let letter = 0; letter < 5; letter++) {
       let index = c+letter
       if (!game[index]) {
+        setTimeout(() => {
+          loading = false
+        },(c*100))
         return
       }
-      pressKey(game[index])
+      setTimeout(()=>{pressKey(game[index])}, (c*100)+letter*25)
     }
-    submitGuess(false, !game[c+5])
+    setTimeout(()=>{submitGuess(false, !game[c+5])}, (c*100)+100)
   }
 }
 
@@ -80,6 +86,9 @@ function stopInteraction() {
 }
 
 function handleMouseClick(e) {
+  if (loading) {
+    return
+  }
   e.target.blur()
   if (e.target.matches("[data-key]")) {
     pressKey(e.target.dataset.key)
@@ -99,6 +108,9 @@ function handleMouseClick(e) {
 }
 
 function handleKeyPress(e) {
+  if (loading) {
+    return
+  }
   if (e.key === "Enter") {
     submitGuess()
     return
