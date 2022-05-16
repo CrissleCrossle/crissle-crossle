@@ -37,6 +37,45 @@ const interfereWords = []
 var saveAfterGuess = true
 var loading = false
 
+var switchedColours = false
+
+document.getElementById("settings-button").onclick = () => {
+  document.getElementById("settings").style.visibility = "visible"
+}
+
+var clicked = false
+
+document.getElementById("switch-colours").onclick = () => {
+  
+  if (clicked) {
+    return
+  }
+
+  clicked = true
+
+  switchedColours = !switchedColours
+
+  let elements = document.getElementsByClassName("tile")
+  for (let i = 0; i < elements.length; i++) {
+    let element = elements.item(i)
+    if (switchedColours) {
+      element.classList.add("switched")
+    } else if (element.classList.contains("switched")) {
+      element.classList.remove("switched")
+    }
+  }
+
+}
+
+document.getElementById("switch-colours").onmouseup = () => {
+  clicked = false
+}
+
+document.getElementById("exit").onclick = () => {
+  document.getElementById("settings").style.visibility = "hidden"
+}
+
+
 function setCharAt(str,index,chr) {
   if(index > str.length-1) return str;
   return str.substring(0,index) + chr + str.substring(index+1);
