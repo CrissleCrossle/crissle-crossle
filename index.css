@@ -1,3 +1,8 @@
+#switch-colours {
+  display: inline-block;
+}
+
+
 body {
     overflow-y: auto;
     background-color: hsl(240, 3%, 7%);

@@ -26,10 +26,9 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="index.css">
-
-  <script src="words.js" defer></script>
-  <!-- <script src="main.js" defer></script>
-  <script src="daily.js" defer></script> -->
+  
+  <script src="main.js" defer></script>
+  <script src="index.js" defer></script>
   <title>Crissle Crossle</title>
 </head>
 <body>
@@ -63,6 +62,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="bi-infinity menu-button" href="infinite"></a>
   </div>
   <div class="page">
+
+    <div style="margin: auto; display: flex; align-items: center; justify-content: center;">
+    <h2 style="display:inline; color:white; padding-right: 1em;">Colourblind Mode</h2>
+    <label class="switch" id="switch-colours">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    </div>
+
     <div class="alert-container" data-alert-container></div>
     <div class="game-area">
       <div data-grid-container class="grid-container">
