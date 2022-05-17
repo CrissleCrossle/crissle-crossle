@@ -37,6 +37,29 @@ const interfereWords = []
 var saveAfterGuess = true
 var loading = false
 
+function switchColours(switchedColours) {
+  window.localStorage.setItem("colourblind", switchedColours)
+  console.log(window.localStorage.getItem("colourblind"))
+  let elements = document.getElementsByClassName("tile")
+  for (let i = 0; i < elements.length; i++) {
+    let element = elements.item(i)
+    if (switchedColours) {
+      element.classList.add("switched")
+    } else if (element.classList.contains("switched")) {
+      element.classList.remove("switched")
+    }
+  }
+
+}
+
+let colourblind = window.localStorage.getItem("colourblind")
+if (colourblind == "true") {
+  switchColours(true)
+} else {
+  switchColours(false)
+}
+
+
 function setCharAt(str,index,chr) {
   if(index > str.length-1) return str;
   return str.substring(0,index) + chr + str.substring(index+1);

@@ -26,10 +26,9 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="index.css">
-
-  <script src="words.js" defer></script>
-  <!-- <script src="main.js" defer></script>
-  <script src="daily.js" defer></script> -->
+  
+  <script src="main.js" defer></script>
+  <script src="index.js" defer></script>
   <title>Crissle Crossle</title>
 </head>
 <body>
@@ -63,13 +62,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="bi-infinity menu-button" href="infinite"></a>
   </div>
   <div class="page">
+
+    <div style="margin: auto; display: flex; align-items: center; justify-content: center;">
+    <h2 style="display:inline; color:white; padding-right: 1em;">Colourblind Mode</h2>
+    <label class="switch" id="switch-colours">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    </div>
+
     <div class="alert-container" data-alert-container></div>
     <div class="game-area">
       <div data-grid-container class="grid-container">
         <div>
           <p>Click the buttons at the top to play daily or infinite!</p>
           <h1>HOW TO PLAY</h1>
-          <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</br></br>After each guess, the color of the tiles will change to show how close your guess was to the word.</br></br>Also after each guess, a word in blue will appear along the right, interfering with your guess.</br></br>The blue word in the same row as your guess affects it in the same way as the answer.</p>
+          <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</br></br>After each guess, the colour of the tiles will change to show how close your guess was to the word.</br></br>Also after each guess, a word in blue will appear along the right, interfering with your guess.</br></br>The blue word in the same row as your guess affects it in the same way as the answer.</p>
 
         </div>
         <div data-guess-grid class="guess-grid grid">
