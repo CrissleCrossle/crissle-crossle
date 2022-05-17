@@ -1,9 +1,0 @@
-.tile[data-state="correct"] {
-  border: none;
-  background-color: hsl(215, 70%, 43%);
-}
-
-.tile[data-state="interfere"] {
-  border: none;
-  background-color: hsl(115, 29%, 43%);
-}
