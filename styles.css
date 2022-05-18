@@ -56,7 +56,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 34px;
-  z-index: -1;
 }
 
 .switch input {
@@ -107,6 +106,7 @@ input:checked + .slider:before {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 
 .menu-button {
