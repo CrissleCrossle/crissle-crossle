@@ -24,31 +24,35 @@ body {
   justify-content: center;
 }
 
-#rules {
-  display: block;
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  align-self: center;
-  text-align: center;
-  overflow-y: auto;
-  background-color: rgb(59, 59, 59);
-  color: white;
-
+#stats {
+  justify-content: center;
 }
 
-.screen-overlay {
+
+.screen-popup {
+  z-index: 100;
   visibility: hidden;
-  display: block;
+  display: flex;
   position: absolute;
-  width: 80%;
-  height: 80%;
+  width: 50%;
+  height: 70%;
   align-self: center;
   text-align: center;
   overflow-y: auto;
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(17, 17, 18);
+  border-radius: 0.5em;
+  border: 0.2em solid white;
   color: white;
   padding: 2em;
+  
+}
+
+#rules {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(17, 17, 18);
+  border: none;
 }
 
 .switch {
@@ -225,35 +229,6 @@ input:checked + .slider:before {
 
 }
 
-/*
-
-.guess-grid {
-  float: left;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  flex-grow: 1;
-  grid-template-columns: repeat(5, 3em);
-  grid-template-rows: repeat(8, 3em);
-  gap: .25em;
-  margin-bottom: 1em;
-  margin-left:20%;
-}
-
-.interfere-grid {
-  float: right;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  flex-grow: 1;
-  grid-template-columns: repeat(5, 3em);
-  grid-template-rows: repeat(8, 3em);
-  gap: .25em;
-  margin-bottom: 1em;
-  margin-right: 20%;
-}
-
-*/
 
 .answer-box {
   display: grid;
@@ -415,27 +390,40 @@ input:checked + .slider:before {
   opacity: 0;
 }
 
-@media only screen and (max-width: 125vh) {
+.top-bar-spacing {
+  padding-inline: 0.8em;
+}
+
+@media only screen and (max-width: 145vh) {
   .tile.title {
-    font-size: 1.25em;
+    font-size: 1em;
+  }
+  .screen-popup {
+    width: 70%;
+  }
+  .top-bar-spacing {
+    padding-inline: 0.5em;
+  }
+  .menu-button {
+    font-size: 2em;
   }
   }
 
 
-@media only screen and (max-width: 115vh) {
+@media only screen and (max-width: 150vh) {
   .tile.title {
-    font-size: 1.15em;
+    font-size: 1em;
   }
   }
   
 
-@media only screen and (max-width: 110vh) {
+@media only screen and (max-width: 130vh) {
   .tile.title {
-    font-size: 1.05em;
+    font-size: 0.75em;
   }
   }
 
-@media only screen and (max-width: 90vh) {
+@media only screen and (max-width: 110vh) {
   .keyboard {
     width: 100%;
     grid-row-gap: .75em;

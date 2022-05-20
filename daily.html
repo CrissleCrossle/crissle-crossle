@@ -33,12 +33,25 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLXW6GH"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  
 
-<!--<div id="rules">hehe</div>-->
+<div id="stats" class="screen-popup">
+
+<div  id="exit-stats" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('stats').style.visibility = 'hidden'"></div>
+<h2>Statistics</h2>
+
+</div>
+
+<div id="rules" class="screen-popup" style="visibility: hidden;">
+  <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('rules').style.visibility = 'hidden'"></div>
+</div>
 
 <div id="top-bar">
-    <a class="bi-question-circle menu-button" href="index"></a>
+    <div style="display: flex; flex-direction: row;">
+      <a class="bi-gear menu-button" href="index"></a>
+      <span class="top-bar-spacing"></span>
+      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'"></div>
+    </div>
+    <span class="top-bar-spacing"></span>
     <div id="title">
       <div class="tile title"  data-state="correct")>C</div>
       <div class="tile title" data-state="correct")>R</div>
@@ -55,7 +68,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="tile title" data-state="interfere")>L</div>
       <div class="tile title" data-state="interfere")>E</div>
     </div>
+    <span class="top-bar-spacing"></span>
+    <div style="display: flex; flex-direction: row;">
+      <a class="bi-bar-chart menu-button" onclick="document.getElementById('stats').style.visibility = 'visible'"></a>
+    <span class="top-bar-spacing"></span>
     <a class="bi-infinity menu-button" href="infinite"></a>
+    </div>
   </div>
   <div class="alert-container" data-alert-container></div>
   <div class="game-area">

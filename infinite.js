@@ -23,6 +23,6 @@ document.getElementById("restart").onclick = () => {
 
 }
 
-win = lose = () => {
+win =  lose = () => {
   document.getElementById("infinite-restart").style.visibility = "visible"
 }
