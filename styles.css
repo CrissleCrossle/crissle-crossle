@@ -53,7 +53,9 @@ body {
   height: 100%;
   background-color: rgb(17, 17, 18);
   border: none;
+  justify-content: center;
 }
+
 
 .switch {
   position: relative;
@@ -229,6 +231,16 @@ input:checked + .slider:before {
 
 }
 
+.help-grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  padding: 10px;
+  text-align: center;
+  gap: 0.25em;
+  vertical-align: middle;
+  margin-bottom: 0vh;
+
+}
 
 .answer-box {
   display: grid;
@@ -283,6 +295,48 @@ input:checked + .slider:before {
   border: none;
   background-color: hsl(215, 70%, 43%);
 }
+
+
+
+/* .help-tile {
+  font-size: 1.5em;
+  line-height: 1.75em;
+  color: white;
+  border: .05em solid hsl(240, 2%, 23%);
+  width: 1.75em;
+  height: 1.75em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1%;
+  vertical-align: middle;
+  font-weight: bold;
+  user-select: none;
+  transition: transform 100ms linear;
+}
+
+.help-tile[data-state="active"] {
+  border-color: hsl(200, 1%, 34%);
+}
+
+.help-tile[data-state="wrong"] {
+  border: none;
+  background-color: hsl(240, 2%, 23%);
+}
+
+.help-tile[data-state="wrong-location"] {
+  border: none;
+  background-color: hsl(49, 51%, 47%);
+}
+
+.help-tile[data-state="correct"] {
+  border: none;
+  background-color: hsl(115, 29%, 43%);
+}
+
+.help-tile[data-state="interfere"] {
+  border: none;
+  background-color: hsl(215, 70%, 43%);
+} */
 
 .switched[data-state="interfere"] {
   background-color: violet;
