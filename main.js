@@ -341,6 +341,7 @@ function checkWinLose(tiles) {
     showAlert("You Win", 5000)
     danceTiles(tiles)
     stopInteraction()
+    win()
     return
   }
 
@@ -348,8 +349,12 @@ function checkWinLose(tiles) {
   if ((remainingTiles.length === 0)) {
     showAlert(targetWord.toUpperCase(), null)
     stopInteraction()
+    lose()
   }
 }
+
+function win() {}
+function lose() {}
 
 function danceTiles(tiles) {
   tiles.forEach((tile, index) => {

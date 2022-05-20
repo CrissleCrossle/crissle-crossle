@@ -1,5 +1,8 @@
-
-/* #title {
-    grid-template-columns: repeat(15, auto);
-  } */
-
+#restart {
+  font-size: 3em;
+  color: white;
+  background-color: hsl(215, 70%, 43%);
+  border-radius: 0.2em;
+  margin: auto;
+  padding: 0.3em;
+}

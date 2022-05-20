@@ -16,3 +16,13 @@ for (let i = 0; i < 7; i++) {
 interfereWords.push("#####")
 
 startInteraction()
+
+document.getElementById("restart").onclick = () => {
+
+  location.reload()
+
+}
+
+win = lose = () => {
+  document.getElementById("infinite-restart").style.visibility = "visible"
+}
