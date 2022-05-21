@@ -84,12 +84,6 @@ document.getElementById("switch-colours").onmouseup = () => {
   clicked = false
 }
 
-// var history = window.localStorage.getItem("history")
-
-// if (history) {
-//   history = JSON.parse(history)
-// }
-
 
 function setCharAt(str,index,chr) {
   if(index > str.length-1) return str;
