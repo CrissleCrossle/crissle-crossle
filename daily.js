@@ -30,23 +30,22 @@ const shareColours = {
 }
 
 
-// document.getElementById("share").onclick = () => {
-//   let shareText = "Crissle Crossle " + String(dayOffset) + " p/8\n" 
-//   let tiles = guessGrid.querySelectorAll(".tile")
-//   for (let i = 0; i < tiles.length; i++) {
-//     if (!tiles[i].dataset.state) {
-//       shareText = shareText.replace("p", String((i/5)))
-//       break
-//     } else {
-//       shareText = shareText.concat("", shareColours[tiles[i].dataset.state])
-//       if ((i+1) % 5 == 0) {
-//         shareText = shareText.concat("", "\n")
-//       }
-//     }
-//   }
+document.getElementById("share").onclick = () => {
+  let shareText = "Crissle Crossle " + String(dayOffset) + " p/8\n" 
+  let tiles = guessGrid.querySelectorAll(".tile")
+  for (let i = 0; i < tiles.length; i++) {
+    if (!tiles[i].dataset.state) {
+      shareText = shareText.replace("p", String((i/5)))
+      break
+    } else {
+      shareText = shareText.concat("", shareColours[tiles[i].dataset.state])
+      if ((i+1) % 5 == 0) {
+        shareText = shareText.concat("", "\n")
+      }
+    }
+  }
 
-//   console.log(shareText)
-//   navigator.clipboard.writeText(shareText)
-//   showAlert("Copied Result To Clipboard")
-// }
+  navigator.clipboard.writeText(shareText)
+  showAlert("Copied Result To Clipboard")
+}
 
