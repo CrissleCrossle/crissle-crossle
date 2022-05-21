@@ -34,31 +34,27 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+
+<div class="alert-container" data-alert-container></div>
+
+
 <div id="stats" class="screen-popup">
 
 <div  id="exit-stats" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('stats').style.visibility = 'hidden'"></div>
+
 <h2>Statistics</h2>
 
 </div>
 
-<div id="rules" class="screen-popup" style="visibility: hidden;">
+<div id="rules" class="fullscreen-popup" style="visibility: hidden;">
   <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: fixed; right: 2%; top: 0%" onclick="document.getElementById('rules').style.visibility = 'hidden'"></div>
   <div class="page">
 
-    <div style="margin: auto; display: flex; align-items: center; justify-content: center;">
-    <h2 style="display:inline; color:white; padding-right: 1em;">Colourblind Mode</h2>
-    <label class="switch" id="switch-colours">
-      <input type="checkbox">
-      <span class="slider"></span>
-    </label>
-    </div>
-
-    <div class="alert-container" data-alert-container></div>
     <div class="game-area">
       <div data-grid-container class="grid-container">
         <div>
-          <p>Click the buttons at the top to play daily or infinite!</p>
           <h1>HOW TO PLAY</h1>
+          <p>Click the buttons at the top to play daily or infinite!</p>
           <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</br></br>After each guess, the colour of the tiles will change to show how close your guess was to the word.</br></br>Also after each guess, a word in blue will appear along the right, interfering with your guess.</br></br>The blue word in the same row as your guess affects it in the same way as the answer.</p>
 
         </div>
@@ -71,7 +67,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="interfere-grid help-grid">
           <div class="tile" data-state="interfere" data-letter="w">W</div>
-          <!--data-letter="w"-->
           <div class="tile" data-state="interfere">O</div>
           <div class="tile" data-state="interfere">R</div>
           <div class="tile" data-state="interfere">D</div>
@@ -132,7 +127,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="tile" data-state="interfere">M</div>
           <div class="tile" data-state="interfere">E</div>
         </div>
-        <!--GOLEM-->
         <p>And these were the colours you got</p>
         <div class="guessgrid help-grid">
           <div class="tile" data-state="correct">C</div>
@@ -162,15 +156,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="tile" data-state="correct">M</div>
         </div>
         <p style="margin-bottom: 5vh;">An example of a word that fits these colours.</br>⠀</p>
-        <!-- PLEASE NOTE I PUT AN INVISIBLE UNICODE CHARACTER AFTER THE LINE BREAK TEMPORARILY SO THAT THERE IS SPACE AT THE BOTTOM OF THE DIV -->
       </div>
     </div>
   </div>
 </div>
 
+<div id="settings" class="fullscreen-popup" style="visibility: hidden; justify-content: baseline;">
+  <div  id="exit-settings" class="bi-x" style="font-size: 3em; position: fixed; right: 0%; top: 0%" onclick="document.getElementById('settings').style.visibility = 'hidden'"></div>
+
+  <div style="flex-direction: column; display: flex; align-items: center; justify-content: baseline;">
+    <h1>SETTINGS</h1>
+    <div style="flex-direction: row; align-items: center; justify-content: center; display: flex;">
+    <h2 style="display:inline; color:white; padding-right: 1em;">High Contrast Mode</h2>
+    <label class="switch" id="switch-colours">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    </div>
+    </div>
+
+</div>
+
 <div id="top-bar">
     <div style="display: flex; flex-direction: row;">
-      <a class="bi-gear menu-button" href="index"></a>
+      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.visibility = 'visible'"></div>
       <span class="top-bar-spacing"></span>
       <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'"></div>
     </div>
@@ -197,8 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="top-bar-spacing"></span>
     <a class="bi-infinity menu-button" href="infinite"></a>
     </div>
-  </div>
-  <div class="alert-container" data-alert-container></div>
+</div>
   <div class="game-area">
     <div data-grid-container class="grid-container">
       <div data-guess-grid class="guess-grid grid">

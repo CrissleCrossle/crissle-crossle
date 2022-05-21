@@ -39,7 +39,6 @@ var loading = false
 
 function switchColours(switchedColours) {
   window.localStorage.setItem("colourblind", switchedColours)
-  console.log(window.localStorage.getItem("colourblind"))
   let elements = document.getElementsByClassName("tile")
   for (let i = 0; i < elements.length; i++) {
     let element = elements.item(i)
@@ -58,6 +57,34 @@ if (colourblind == "true") {
 } else {
   switchColours(false)
 }
+
+var clicked = false
+
+if (window.localStorage.getItem("colourblind") == "true") {
+    document.getElementById("switch-colours").click()
+}
+
+document.getElementById("switch-colours").onclick = () => {
+    
+    if (clicked) {
+      return
+    }
+  
+    clicked = true
+
+    if (window.localStorage.getItem("colourblind") == "true") {
+        switchColours(false)
+    } else {
+        switchColours(true)
+
+    }
+  
+  
+  }
+  
+  document.getElementById("switch-colours").onmouseup = () => {
+    clicked = false
+  }
 
 
 function setCharAt(str,index,chr) {

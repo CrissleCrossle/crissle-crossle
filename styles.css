@@ -28,6 +28,22 @@ body {
   justify-content: center;
 }
 
+.fullscreen-popup {
+  z-index: 100;
+  visibility: hidden;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  text-align: center;
+  overflow-y: auto;
+  background-color: rgb(17, 17, 18);
+  border: none;
+  justify-content: center;
+  color: white;
+  padding: 2em;
+}
 
 .screen-popup {
   z-index: 100;
@@ -45,15 +61,6 @@ body {
   color: white;
   padding: 2em;
   
-}
-
-#rules {
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(17, 17, 18);
-  border: none;
-  justify-content: center;
 }
 
 
