@@ -39,15 +39,13 @@ var loading = false
 
 function switchColours(switchedColours) {
   window.localStorage.setItem("colourblind", switchedColours)
-  let elements = document.getElementsByClassName("tile")
-  for (let i = 0; i < elements.length; i++) {
-    let element = elements.item(i)
-    if (switchedColours) {
-      element.classList.add("switched")
-    } else if (element.classList.contains("switched")) {
-      element.classList.remove("switched")
-    }
-  }
+
+  let s = getComputedStyle(document.documentElement)
+
+  document.documentElement.style.setProperty("--correct", switchedColours ? s.getPropertyValue("--contrast-correct") : s.getPropertyValue("--default-correct"))
+  document.documentElement.style.setProperty("--wrong-location", switchedColours ? s.getPropertyValue("--contrast-wrong-location") : s.getPropertyValue("--default-wrong-location"))
+  document.documentElement.style.setProperty("--interfere", switchedColours ? s.getPropertyValue("--contrast-interfere") : s.getPropertyValue("--default-interfere"))
+  document.documentElement.style.setProperty("--wrong", switchedColours ? s.getPropertyValue("--contrast-wrong") : s.getPropertyValue("--default-wrong"))
 
 }
 
@@ -80,11 +78,17 @@ document.getElementById("switch-colours").onclick = () => {
     }
   
   
-  }
+}
   
-  document.getElementById("switch-colours").onmouseup = () => {
-    clicked = false
-  }
+document.getElementById("switch-colours").onmouseup = () => {
+  clicked = false
+}
+
+// var history = window.localStorage.getItem("history")
+
+// if (history) {
+//   history = JSON.parse(history)
+// }
 
 
 function setCharAt(str,index,chr) {

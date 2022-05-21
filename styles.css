@@ -1,6 +1,24 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
 
+:root {
+
+  --default-correct: hsl(115, 29%, 43%);
+  --default-wrong-location: hsl(49, 51%, 47%);
+  --defualt-wrong: hsl(240, 2%, 23%);
+  --default-interfere: hsl(215, 70%, 43%);
+
+  --contrast-correct: orangered;
+  --contrast-wrong-location: aquamarine;
+  --contrast-wrong: hsl(240, 2%, 23%);
+  --contrast-interfere: violet;
+
+  --correct: hsl(115, 29%, 43%);
+  --wrong-location: hsl(49, 51%, 47%);
+  --wrong: hsl(240, 2%, 23%);
+  --interfere: hsl(215, 70%, 43%);
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
   font-family: Arial;
@@ -24,8 +42,49 @@ body {
   justify-content: center;
 }
 
+#share {
+  font-size: 2em;
+  color: white;
+  background-color: var(--correct);
+  border-radius: 0.2em;
+  padding: 0.3em;
+}
+
 #stats {
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+  justify-content: space-evenly;
+}
+
+.stats-numboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+#graph {
+  width: 60%;
+}
+
+.bar-container {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center;
+  margin-block: 0.5em;
+  padding: 0%;
+  height: 1.2em;
+}
+
+.bar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--wrong);
+  padding-right: 1em;
+  font-size: 0.8em;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .fullscreen-popup {
@@ -51,7 +110,7 @@ body {
   display: flex;
   position: absolute;
   width: 50%;
-  height: 70%;
+  height: 80%;
   align-self: center;
   text-align: center;
   overflow-y: auto;
@@ -59,7 +118,7 @@ body {
   border-radius: 0.5em;
   border: 0.2em solid white;
   color: white;
-  padding: 2em;
+  padding: 1em;
   
 }
 
@@ -84,7 +143,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: hsl(115, 29%, 43%);
+  background-color: var(--correct);
   transition: .05s;
 }
 
@@ -156,15 +215,6 @@ input:checked + .slider:before {
   height: 200%;
   width:100%;
   display: flex;
-}
-
-#share {
-  font-size: 2em;
-  color: white;
-  background-color: hsl(115, 29%, 43%);
-  border-radius: 0.2em;
-  margin: auto;
-  padding: 0.3em;
 }
 
 .key {
@@ -267,7 +317,7 @@ input:checked + .slider:before {
   font-size: 1.5em;
   line-height: 1.75em;
   color: white;
-  border: .05em solid hsl(240, 2%, 23%);
+  border: .05em solid var(--wrong);
   width: 1.75em;
   height: 1.75em;
   text-transform: uppercase;
@@ -285,77 +335,24 @@ input:checked + .slider:before {
 
 .tile[data-state="wrong"] {
   border: none;
-  background-color: hsl(240, 2%, 23%);
+  background-color: var(--wrong);
 }
 
 .tile[data-state="wrong-location"] {
   border: none;
-  background-color: hsl(49, 51%, 47%);
+  background-color: var(--wrong-location);
 }
 
 .tile[data-state="correct"] {
   border: none;
-  background-color: hsl(115, 29%, 43%);
+  background-color: var(--correct);
 }
 
 .tile[data-state="interfere"] {
   border: none;
-  background-color: hsl(215, 70%, 43%);
+  background-color: var(--interfere);
 }
 
-
-
-/* .help-tile {
-  font-size: 1.5em;
-  line-height: 1.75em;
-  color: white;
-  border: .05em solid hsl(240, 2%, 23%);
-  width: 1.75em;
-  height: 1.75em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 1%;
-  vertical-align: middle;
-  font-weight: bold;
-  user-select: none;
-  transition: transform 100ms linear;
-}
-
-.help-tile[data-state="active"] {
-  border-color: hsl(200, 1%, 34%);
-}
-
-.help-tile[data-state="wrong"] {
-  border: none;
-  background-color: hsl(240, 2%, 23%);
-}
-
-.help-tile[data-state="wrong-location"] {
-  border: none;
-  background-color: hsl(49, 51%, 47%);
-}
-
-.help-tile[data-state="correct"] {
-  border: none;
-  background-color: hsl(115, 29%, 43%);
-}
-
-.help-tile[data-state="interfere"] {
-  border: none;
-  background-color: hsl(215, 70%, 43%);
-} */
-
-.switched[data-state="interfere"] {
-  background-color: violet;
-}
-
-.switched[data-state="correct"] {
-  background-color: orangered;
-}
-
-.switched[data-state="wrong-location"] {
-  background-color: aquamarine;
-}
 
 .tile.shake {
   animation: shake 250ms ease-in-out;

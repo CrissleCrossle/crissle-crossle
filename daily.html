@@ -38,11 +38,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="alert-container" data-alert-container></div>
 
 
-<div id="stats" class="screen-popup">
+<div id="stats" class="screen-popup" style="visibility: visible;">
 
 <div  id="exit-stats" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('stats').style.visibility = 'hidden'"></div>
 
-<h2>Statistics</h2>
+<h2 style="margin-block: 0%;">Statistics</h2>
+
+<div style="display: flex; flex-direction: row;">
+  <div class="stats-numboxes">
+    <h2 id="played" style="margin: inherit";>3</h2>
+    <h5 style="margin: inherit">Played</h5>
+  </div>
+  <span style="margin: 1em;"></span>
+  <div class="stats-numboxes">
+    <h2 id="winrate" style="margin: inherit">100</h2>
+    <h5 style="margin: inherit">Win %</h5>
+  </div>
+</div>
+
+<div id="graph">
+
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">1</h5><div id= "bar1" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">2</h5><div id= "bar2" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">3</h5><div id= "bar3" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">4</h5><div id= "bar4" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">5</h5><div id= "bar5" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">6</h5><div id= "bar6" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">7</h5><div id= "bar7" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">8</h5><div id= "bar8" class="bar">0</div></div>
+
+</div>
 
 <div id="share" class="bi-share"> Share</div>
 
