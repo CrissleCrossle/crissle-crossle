@@ -48,6 +48,7 @@ body {
   background-color: var(--correct);
   border-radius: 0.2em;
   padding: 0.3em;
+  display: none;
 }
 
 #stats {

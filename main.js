@@ -36,6 +36,7 @@ var targetWord = ""
 const interfereWords = []
 var saveAfterGuess = true
 var loading = false
+const share = document.querySelector('#share');
 
 function switchColours(switchedColours) {
   window.localStorage.setItem("colourblind", switchedColours)
@@ -224,15 +225,20 @@ function submitGuess(save=true, checkWin=true) {
 
   let tWord = guess.toLowerCase()
 
+  let greens = 0
   for (let letter = 0; letter < guess.length; letter++) {
     if ((guess[letter] == _targetWord[letter]) || (guess[letter] == interfereWord[letter])) {
       tWord = setCharAt(tWord, letter, "@")
       if (guess[letter] == _targetWord[letter]) {
         _targetWord = setCharAt(_targetWord, letter, "-")
+        greens+=1
       } else if (guess[letter] == interfereWord[letter]) {
         interfereWord = setCharAt(interfereWord, letter, "-")
+        greens+=1
       }
-
+    if (greens == 5) {
+      showAlert("Not Quite...",  5000)
+    }
     }
   }
 
@@ -363,9 +369,10 @@ function checkWinLose(tiles) {
   }, "")
 
   if (guess === targetWord) {
-    showAlert("You Win", 5000)
+    showAlert("You Win", null)
     danceTiles(tiles)
     stopInteraction()
+    share.style.display = "initial"
     win()
     return
   }
@@ -374,6 +381,7 @@ function checkWinLose(tiles) {
   if ((remainingTiles.length === 0)) {
     showAlert(targetWord.toUpperCase(), null)
     stopInteraction()
+    share.style.display = "initial"
     lose()
   }
 }
