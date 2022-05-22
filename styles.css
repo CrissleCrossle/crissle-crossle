@@ -471,14 +471,20 @@ input:checked + .slider:before {
 
 @media only screen and (max-width: 150vh) {
   .tile.title {
-    font-size: 1em;
+    font-size: 1.3em;
   }
   }
   
 
 @media only screen and (max-width: 130vh) {
   .tile.title {
-    font-size: 0.75em;
+    font-size: 1.1em;
+  }
+  }
+
+@media only screen and (max-width: 110vh) {
+  .tile.title {
+    font-size: 0.9em;
   }
   }
 
