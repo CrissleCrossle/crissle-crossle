@@ -33,12 +33,195 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLXW6GH"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  
 
-<!--<div id="rules">hehe</div>-->
+
+<div class="alert-container" data-alert-container></div>
+
+
+<div id="stats" class="screen-popup">
+
+<div  id="exit-stats" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('stats').style.visibility = 'hidden'"></div>
+
+<h2 style="margin-block: 0%;">Statistics</h2>
+
+<div style="display: flex; flex-direction: row;">
+  <div class="stats-numboxes">
+    <h2 id="played" style="margin: inherit";>0</h2>
+    <h5 style="margin: inherit">Played</h5>
+  </div>
+  <span style="margin: 1em;"></span>
+  <div class="stats-numboxes">
+    <h2 id="winrate" style="margin: inherit">0</h2>
+    <h5 style="margin: inherit">Win %</h5>
+  </div>
+</div>
+
+<div id="graph">
+
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">1</h5><div id= "bar1" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">2</h5><div id= "bar2" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">3</h5><div id= "bar3" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">4</h5><div id= "bar4" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">5</h5><div id= "bar5" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">6</h5><div id= "bar6" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">7</h5><div id= "bar7" class="bar">0</div></div>
+  <div class= "bar-container"><h5 style="display: inline; margin-right: 0.2em;">8</h5><div id= "bar8" class="bar">0</div></div>
+
+</div>
+
+<div id="share" class="bi-share"> Share</div>
+
+</div>
+
+<div id="rules" class="fullscreen-popup" style="visibility: hidden;">
+  <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: fixed; right: 2%; top: 0%" onclick="document.getElementById('rules').style.visibility = 'hidden'"></div>
+  <div class="page">
+
+    <div class="game-area">
+      <div data-grid-container class="grid-container">
+        <div>
+          <h1>HOW TO PLAY</h1>
+          <p>Click the buttons at the top to play daily or infinite!</p>
+          <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</br></br>After each guess, the colour of the tiles will change to show how close your guess was to the word.</br></br>Also after each guess, a word in blue will appear along the right, interfering with your guess.</br></br>The blue word in the same row as your guess affects it in the same way as the answer.</p>
+
+        </div>
+        <div class="guess-grid help-grid">
+          <div class="tile" data-state="correct" data-letter="w")>W</div>
+          <div class="tile" data-letter="e">E</div>
+          <div class="tile" data-letter="a">A</div>
+          <div class="tile" data-letter="r">R</div>
+          <div class="tile" data-letter="y">Y</div>
+        </div>
+        <div class="interfere-grid help-grid">
+          <div class="tile" data-state="interfere" data-letter="w">W</div>
+          <div class="tile" data-state="interfere">O</div>
+          <div class="tile" data-state="interfere">R</div>
+          <div class="tile" data-state="interfere">D</div>
+          <div class="tile" data-state="interfere">S</div>
+        </div>
+        <div>
+          <p>The letter W is in the 1st spot in (at least) one of the answer and corresponding blue word.</p>
+        </div>
+        <div class="guessgrid help-grid">
+          <div class="tile">P</div>
+          <div class="tile" data-state="wrong-location">I</div>
+          <div class="tile">L</div>
+          <div class="tile">L</div>
+          <div class="tile">S</div>
+        </div>
+        <div class="interfere-grid help-grid">
+          <div class="tile" data-state="interfere">A</div>
+          <div class="tile" data-state="interfere">L</div>
+          <div class="tile" data-state="interfere">O</div>
+          <div class="tile" data-state="interfere">N</div>
+          <div class="tile" data-state="interfere">G</div>
+        </div>
+        <div>
+          <p>The letter I is in (at least) one of the answer and corresponding blue word, but is not in the 2nd spot in either.</p>
+        </div>
+        <div class="guessgrid help-grid">
+          <div class="tile" >V</div>
+          <div class="tile">A</div>
+          <div class="tile">G</div>
+          <div class="tile" data-state="wrong">U</div>
+          <div class="tile">E</div>
+        </div>
+        <div class="interfere-grid help-grid">
+          <div class="tile" data-state="interfere">R</div>
+          <div class="tile" data-state="interfere">I</div>
+          <div class="tile" data-state="interfere">G</div>
+          <div class="tile" data-state="interfere">H</div>
+          <div class="tile" data-state="interfere">T</div>
+        </div>
+        <div>
+          <p>The letter U is not in either the answer or corresponding blue word in any spot.</br></br></p>
+        </div>
+        <div>
+          <h1>EXAMPLE</h1>
+          <p>If you entered the guess "CLAIM" and the blue word was "CRIME":</p>
+        </div>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="correct">C</div>
+          <div class="tile" data-state="wrong-location">L</div>
+          <div class="tile" data-state="wrong">A</div>
+          <div class="tile" data-state="wrong-location">I</div>
+          <div class="tile" data-state="correct">M</div>
+        </div>
+        <div class="interfere-grid help-grid">
+          <div class="tile" data-state="interfere">C</div>
+          <div class="tile" data-state="interfere">R</div>
+          <div class="tile" data-state="interfere">I</div>
+          <div class="tile" data-state="interfere">M</div>
+          <div class="tile" data-state="interfere">E</div>
+        </div>
+        <p>And these were the colours you got</p>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="correct">C</div>
+        </div>
+        <p>The "C" is green, but it IS in the same spot in the blue word, so you cannot be sure that it is in the answer.</p>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="wrong-location">L</div>
+        </div>
+        <p>The "L" is yellow, and it is NOT in the blue word, so you can be sure that it must be somewhere in the answer, just not in the 2nd spot.</p>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="wrong">A</div>
+        </div>
+        <p>The "A" is grey, so it is definitely not in either word, meaning it is not in the answer.</p>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="wrong-location">I</div>
+        </div>
+        <p>The "I" is yellow, however it IS in the blue word, so you cannot be sure that it is in the answer.</p>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="correct">M</div>
+        </div>
+        <p>The "M" is green, and while it is in the blue word, it is NOT in the 5th spot in it, so you can be sure that is must be in the 5th spot of the answer.</p>
+        <div class="guessgrid help-grid">
+          <div class="tile" data-state="correct">G</div>
+          <div class="tile" data-state="correct">O</div>
+          <div class="tile" data-state="correct">L</div>
+          <div class="tile" data-state="correct">E</div>
+          <div class="tile" data-state="correct">M</div>
+        </div>
+        <p style="margin-bottom: 5vh;">An example of a word that fits these colours.</br>⠀</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="settings" class="screen-popup" style="visibility: hidden; justify-content: space-around;">
+  <div  id="exit-settings" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('settings').style.visibility = 'hidden'"></div>
+
+  <div style="flex-direction: column; display: flex; align-items: center; justify-content: center;">
+    <h2>Settings</h2>
+    <div style="flex-direction: row; align-items: center; justify-content: space-around; display: flex;">
+    <div>
+      <div style="display:flex; align-items: center; justify-content: space-between;">
+        <h3 style="display:inline; color:white; padding-right: 1em; float:left;">High Contrast Mode</h3>
+        <label class="switch" id="switch-colours">
+          <input type="checkbox">
+          <span class="slider-colourblind"></span>
+        </label>
+      </div>
+      <div style="display:flex; align-items: center; justify-content: space-between;">
+        <h3 style="display:inline; color:white; padding-right: 1em; float:left;">Light Mode</h3>
+        <label class="switch" id="switch-background">
+          <input type="checkbox">
+          <span class="slider-background"></span>
+      </div>
+    </div>
+    </label>
+    </div>
+    </div>
+
+</div>
 
 <div id="top-bar">
-    <a class="bi-question-circle menu-button" href="index"></a>
+    <div style="display: flex; flex-direction: row;">
+      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.visibility = 'visible'; document.getElementById('stats').style.visibility = 'hidden'"></div>
+      <span class="top-bar-spacing"></span>
+      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'; document.getElementById('settings').style.visibility = 'hidden'; document.getElementById('stats').style.visibility = 'hidden'"></div>
+    </div>
+    <span class="top-bar-spacing"></span>
     <div id="title">
       <div class="tile title"  data-state="correct")>C</div>
       <div class="tile title" data-state="correct")>R</div>
@@ -55,9 +238,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="tile title" data-state="interfere")>L</div>
       <div class="tile title" data-state="interfere")>E</div>
     </div>
+    <span class="top-bar-spacing"></span>
+    <div style="display: flex; flex-direction: row;">
+      <a class="bi-bar-chart menu-button" onclick="document.getElementById('stats').style.visibility = 'visible'; document.getElementById('settings').style.visibility = 'hidden'"></a>
+    <span class="top-bar-spacing"></span>
     <a class="bi-infinity menu-button" href="infinite"></a>
-  </div>
-  <div class="alert-container" data-alert-container></div>
+    </div>
+</div>
   <div class="game-area">
     <div data-grid-container class="grid-container">
       <div data-guess-grid class="guess-grid grid">
@@ -177,10 +364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="key" data-key="N">N</button>
     <button class="key" data-key="M">M</button>
     <button data-delete class="key large">Back</button>
-  
-    <!-- <div class="finished">
-      <div id="share" class="bi-share"> Share</div>
-    </div> -->
+
   
   </div>
 
