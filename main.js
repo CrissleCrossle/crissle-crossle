@@ -77,6 +77,9 @@ function switchBackground(switchedColours) {
     flipLightDark(switchedColours)
   }
 
+  document.getElementById("title").querySelectorAll(".tile").forEach((element) => {
+    element.style.color = "white"
+  })
 
 }
 
@@ -101,7 +104,7 @@ document.getElementById("switch-colours").onclick = () => {
   
     clickedColourblind = true
 
-    if (window.localStorage.getItem("colourblind") == "true") {
+    if (windedow.localStorage.getItem("colourblind") == "true") {
         switchColours(false)
     } else {
         switchColours(true)
@@ -362,6 +365,7 @@ function flipTile(tile, index, array, state, checkWin) {
 
   tile.addEventListener("transitionend", ()=>{
     tile.classList.remove("flip")
+    tile.style.color = "white"
     tile.dataset.state = state
     tile.style.color = "--font-colour"
     if (state == "interfere") {
