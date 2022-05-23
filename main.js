@@ -301,7 +301,7 @@ function submitGuess(save=true, checkWin=true) {
         interfereWord = setCharAt(interfereWord, letter, "-")
         greens+=1
       }
-    if (greens == 5) {
+    if (greens == 5 && guess != _targetWord) {
       showAlert("Not Quite...",  5000)
     }
     }
