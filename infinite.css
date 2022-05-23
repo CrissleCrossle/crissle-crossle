@@ -1,5 +1,5 @@
 #restart {
-  position: absolute;
+  position: fixed;
   align-self: center;
   justify-self: center;
   font-size: 3em;
