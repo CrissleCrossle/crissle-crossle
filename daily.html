@@ -188,16 +188,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<div id="settings" class="fullscreen-popup" style="visibility: hidden; justify-content: baseline;">
-  <div  id="exit-settings" class="bi-x" style="font-size: 3em; position: fixed; right: 0%; top: 0%" onclick="document.getElementById('settings').style.visibility = 'hidden'"></div>
+<div id="settings" class="screen-popup" style="visibility: hidden; justify-content: space-around;">
+  <div  id="exit-settings" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('settings').style.visibility = 'hidden'"></div>
 
-  <div style="flex-direction: column; display: flex; align-items: center; justify-content: baseline;">
-    <h1>SETTINGS</h1>
-    <div style="flex-direction: row; align-items: center; justify-content: center; display: flex;">
-    <h2 style="display:inline; color:white; padding-right: 1em;">High Contrast Mode</h2>
-    <label class="switch" id="switch-colours">
-      <input type="checkbox">
-      <span class="slider"></span>
+  <div style="flex-direction: column; display: flex; align-items: center; justify-content: center;">
+    <h2>Settings</h2>
+    <div style="flex-direction: row; align-items: center; justify-content: space-around; display: flex;">
+    <div>
+      <div style="display:flex; align-items: center; justify-content: space-between;">
+        <h3 style="display:inline; color:white; padding-right: 1em; float:left;">High Contrast Mode</h3>
+        <label class="switch" id="switch-colours">
+          <input type="checkbox">
+          <span class="slider-colourblind"></span>
+        </label>
+      </div>
+      <div style="display:flex; align-items: center; justify-content: space-between;">
+        <h3 style="display:inline; color:white; padding-right: 1em; float:left;">Light Mode</h3>
+        <label class="switch" id="switch-background">
+          <input type="checkbox">
+          <span class="slider-background"></span>
+      </div>
+    </div>
     </label>
     </div>
     </div>
@@ -206,9 +217,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div id="top-bar">
     <div style="display: flex; flex-direction: row;">
-      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.visibility = 'visible'"></div>
+      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.visibility = 'visible'; document.getElementById('stats').style.visibility = 'hidden'"></div>
       <span class="top-bar-spacing"></span>
-      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'"></div>
+      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'; document.getElementById('settings').style.visibility = 'hidden'; document.getElementById('stats').style.visibility = 'hidden'"></div>
     </div>
     <span class="top-bar-spacing"></span>
     <div id="title">
@@ -229,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <span class="top-bar-spacing"></span>
     <div style="display: flex; flex-direction: row;">
-      <a class="bi-bar-chart menu-button" onclick="document.getElementById('stats').style.visibility = 'visible'"></a>
+      <a class="bi-bar-chart menu-button" onclick="document.getElementById('stats').style.visibility = 'visible'; document.getElementById('settings').style.visibility = 'hidden'"></a>
     <span class="top-bar-spacing"></span>
     <a class="bi-infinity menu-button" href="infinite"></a>
     </div>

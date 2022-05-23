@@ -2,21 +2,35 @@
 
 
 :root {
+  --main-correct: hsl(115, 29%, 43%);
+  --main-wrong-location: hsl(49, 51%, 47%);
+  --main-wrong: hsl(240, 2%, 23%);
+  --main-interfere: hsl(215, 70%, 43%);
 
   --default-correct: hsl(115, 29%, 43%);
   --default-wrong-location: hsl(49, 51%, 47%);
-  --defualt-wrong: hsl(240, 2%, 23%);
+  --default-wrong: hsl(240, 2%, 23%);
   --default-interfere: hsl(215, 70%, 43%);
+
+  --lightmode-default-correct: hsl(115, 29%, 50%);
+  --lightmode-default-wrong-location: hsl(49, 51%, 55%);
+  --lightmode-default-wrong: hsl(240, 2%, 48%);
+  --lightmode-default-interfere: hsl(215, 70%, 43%);
 
   --contrast-correct: orangered;
   --contrast-wrong-location: aquamarine;
-  --contrast-wrong: hsl(240, 2%, 23%);
+  --contrast-wrong: black;
   --contrast-interfere: violet;
 
   --correct: hsl(115, 29%, 43%);
   --wrong-location: hsl(49, 51%, 47%);
   --wrong: hsl(240, 2%, 23%);
   --interfere: hsl(215, 70%, 43%);
+
+  --darkmode: rgb(17, 17, 18);
+  --lightmode: white;
+  --background: rgb(17, 17, 18);
+  --button-colour: white;
 }
 
 *, *::after, *::before {
@@ -29,7 +43,7 @@
 }
 
 body {
-  background-color: rgb(17, 17, 18);
+  background-color: var(--background);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -137,7 +151,7 @@ body {
   height: 0;
 }
 
-.slider {
+.slider-colourblind {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -148,30 +162,58 @@ body {
   transition: .05s;
 }
 
-.slider:before {
+.slider-colourblind:before {
   position: absolute;
   content: "";
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: lightgrey;
   transition: .05s;
 }
 
-input:checked + .slider {
+input:checked + .slider-colourblind {
   background-color: orangered;
 }
 
-input:focus + .slider {
+input:focus + .slider-colourblind, input:checked + .slider-background {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked + .slider-colourblind:before, input:checked + .slider-background:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
+
+
+.slider-background {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  transition: .05s;
+}
+
+.slider-background:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: lightgrey;
+  transition: .05s;
+}
+
+input:checked + .slider-background {
+  background-color: white;
+}
+
 
 #top-bar {
   margin-top: 0;
@@ -186,7 +228,7 @@ input:checked + .slider:before {
   font-size: 3em;
   border: none;
   text-decoration: none;
-  color: white;
+  color: var(--button-colour);
 }
 
 #title {
