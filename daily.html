@@ -73,8 +73,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </div>
 
-<div id="rules" class="fullscreen-popup" style="visibility: hidden;">
-  <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: fixed; right: 2%; top: 0%" onclick="document.getElementById('rules').style.visibility = 'hidden'"></div>
+<div id="rules" class="fullscreen-popup" style="visibility: hidden; display: none;">
+  <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: fixed; right: 2%; top: 0%" onclick="document.getElementById('rules').style.visibility = 'hidden'; document.getElementById('rules').style.display = 'none'"></div>
   <div class="page">
 
     <div class="game-area">
@@ -217,9 +217,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div id="top-bar">
     <div style="display: flex; flex-direction: row;">
-      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.display = 'inherit'; document.getElementById('stats').style.visibility = 'hidden'"></div>
+      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.visibility = 'visible'; document.getElementById('stats').style.visibility = 'hidden'"></div>
       <span class="top-bar-spacing"></span>
-      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'; document.getElementById('settings').style.visibility = 'hidden'; document.getElementById('stats').style.visibility = 'hidden'"></div>
+      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'; document.getElementById('rules').style.display = 'inherit'; document.getElementById('settings').style.visibility = 'hidden'; document.getElementById('stats').style.visibility = 'hidden'"></div>
     </div>
     <span class="top-bar-spacing"></span>
     <div id="title">

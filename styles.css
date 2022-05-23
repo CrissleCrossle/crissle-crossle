@@ -104,6 +104,7 @@ body {
 
 .fullscreen-popup {
   z-index: 100;
+  visibility: hidden;
   display: none;
   display: flex;
   position: fixed;
