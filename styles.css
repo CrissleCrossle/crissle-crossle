@@ -29,7 +29,7 @@
   --darkmode: rgb(17, 17, 18);
   --lightmode: white;
   --background: rgb(17, 17, 18);
-  --button-colour: white;
+  --font-colour: white;
 }
 
 *, *::after, *::before {
@@ -57,6 +57,7 @@ body {
   height: 100%;
   overflow-y: hidden;
   justify-content: center;
+  color: var(--font-colour);
 }
 
 #share {
@@ -233,7 +234,7 @@ input:checked + .slider-background {
   font-size: 3em;
   border: none;
   text-decoration: none;
-  color: var(--button-colour);
+  color: var(--font-colour);
 }
 
 #title {

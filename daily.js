@@ -105,6 +105,7 @@ function configureGraph(data, current=null) {
 }
 
 win = () => {
+  share.style.display = "initial"
   let tiles = guessGrid.querySelectorAll(".tile")
   let score = 8
 
@@ -127,6 +128,7 @@ win = () => {
 }
 
 lose = () => {
+  share.style.display = "initial"
   pastGames[String(dayOffset)] = "X"
   window.localStorage.setItem("pastGames", JSON.stringify(pastGames))
 

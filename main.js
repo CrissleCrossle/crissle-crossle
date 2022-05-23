@@ -71,7 +71,7 @@ function switchBackground(switchedColours) {
   document.documentElement.style.setProperty("--default-wrong-location", switchedColours ? s.getPropertyValue("--lightmode-default-wrong-location") : s.getPropertyValue("--main-wrong-location"))
   document.documentElement.style.setProperty("--default-interfere", switchedColours ? s.getPropertyValue("--lightmode-default-interfere") : s.getPropertyValue("--main-interfere"))
   document.documentElement.style.setProperty("--default-wrong", switchedColours ? s.getPropertyValue("--lightmode-default-wrong") : s.getPropertyValue("--main-wrong"))
-  document.documentElement.style.setProperty("--button-colour", switchedColours ? "black" : "white")
+  document.documentElement.style.setProperty("--font-colour", switchedColours ? "black" : "white")
   
   if (colourblind == "false") {
     flipLightDark(switchedColours)
@@ -437,7 +437,6 @@ function checkWinLose(tiles) {
     showAlert("You Win", null)
     danceTiles(tiles)
     stopInteraction()
-    share.style.display = "initial"
     win()
     return
   }
@@ -446,7 +445,6 @@ function checkWinLose(tiles) {
   if ((remainingTiles.length === 0)) {
     showAlert(targetWord.toUpperCase(), null)
     stopInteraction()
-    share.style.display = "initial"
     lose()
   }
 }
