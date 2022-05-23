@@ -36,19 +36,47 @@ var targetWord = ""
 const interfereWords = []
 var saveAfterGuess = true
 var loading = false
+const share = document.querySelector('#share');
 
 function switchColours(switchedColours) {
   window.localStorage.setItem("colourblind", switchedColours)
-  console.log(window.localStorage.getItem("colourblind"))
-  let elements = document.getElementsByClassName("tile")
-  for (let i = 0; i < elements.length; i++) {
-    let element = elements.item(i)
-    if (switchedColours) {
-      element.classList.add("switched")
-    } else if (element.classList.contains("switched")) {
-      element.classList.remove("switched")
-    }
+
+  let s = getComputedStyle(document.documentElement)
+
+  document.documentElement.style.setProperty("--correct", switchedColours ? s.getPropertyValue("--contrast-correct") : s.getPropertyValue("--default-correct"))
+  document.documentElement.style.setProperty("--wrong-location", switchedColours ? s.getPropertyValue("--contrast-wrong-location") : s.getPropertyValue("--default-wrong-location"))
+  document.documentElement.style.setProperty("--interfere", switchedColours ? s.getPropertyValue("--contrast-interfere") : s.getPropertyValue("--default-interfere"))
+  document.documentElement.style.setProperty("--wrong", switchedColours ? s.getPropertyValue("--contrast-wrong") : s.getPropertyValue("--default-wrong"))
+
+}
+
+function flipLightDark(switchedColours) {
+  let s = getComputedStyle(document.documentElement)
+  document.documentElement.style.setProperty("--correct", switchedColours ? s.getPropertyValue("--lightmode-default-correct") : s.getPropertyValue("--main-correct"))
+  document.documentElement.style.setProperty("--wrong-location", switchedColours ? s.getPropertyValue("--lightmode-default-wrong-location") : s.getPropertyValue("--main-wrong-location"))
+  document.documentElement.style.setProperty("--interfere", switchedColours ? s.getPropertyValue("--lightmode-default-interfere") : s.getPropertyValue("--main-interfere"))
+  document.documentElement.style.setProperty("--wrong", switchedColours ? s.getPropertyValue("--lightmode-default-wrong") : s.getPropertyValue("--main-wrong"))
+}
+
+function switchBackground(switchedColours) {
+  window.localStorage.setItem("light", switchedColours)
+  
+  let s = getComputedStyle(document.documentElement)
+  let s2 = getComputedStyle(document.body)
+  let colourblind = window.localStorage.getItem("colourblind")
+  
+
+  document.body.style.setProperty("--background", switchedColours ? s2.getPropertyValue("--lightmode") : s2.getPropertyValue("--darkmode"))
+  document.documentElement.style.setProperty("--default-correct", switchedColours ? s.getPropertyValue("--lightmode-default-correct") : s.getPropertyValue("--main-correct"))
+  document.documentElement.style.setProperty("--default-wrong-location", switchedColours ? s.getPropertyValue("--lightmode-default-wrong-location") : s.getPropertyValue("--main-wrong-location"))
+  document.documentElement.style.setProperty("--default-interfere", switchedColours ? s.getPropertyValue("--lightmode-default-interfere") : s.getPropertyValue("--main-interfere"))
+  document.documentElement.style.setProperty("--default-wrong", switchedColours ? s.getPropertyValue("--lightmode-default-wrong") : s.getPropertyValue("--main-wrong"))
+  document.documentElement.style.setProperty("--button-colour", switchedColours ? "black" : "white")
+  
+  if (colourblind == "false") {
+    flipLightDark(switchedColours)
   }
+
 
 }
 
@@ -59,6 +87,69 @@ if (colourblind == "true") {
   switchColours(false)
 }
 
+var clickedColourblind = false
+
+if (window.localStorage.getItem("colourblind") == "true") {
+    document.getElementById("switch-colours").click()
+}
+
+document.getElementById("switch-colours").onclick = () => {
+    
+    if (clickedColourblind) {
+      return
+    }
+  
+    clickedColourblind = true
+
+    if (window.localStorage.getItem("colourblind") == "true") {
+        switchColours(false)
+    } else {
+        switchColours(true)
+
+    }
+  
+  
+}
+  
+document.getElementById("switch-colours").onmouseup = () => {
+  clickedColourblind = false
+}
+
+
+let light = window.localStorage.getItem("light")
+if (light == "true") {
+  switchBackground(true)
+} else {
+  switchBackground(false)
+}
+
+var clickedBackground = false
+
+if (window.localStorage.getItem("light") == "true") {
+    document.getElementById("switch-background").click()
+}
+
+document.getElementById("switch-background").onclick = () => {
+    
+    if (clickedBackground) {
+      return
+    }
+  
+    clickedBackground = true
+
+    if (window.localStorage.getItem("light") == "true") {
+        switchBackground(false)
+    } else {
+        switchBackground(true)
+
+    }
+  
+  
+}
+  
+document.getElementById("switch-background").onmouseup = () => {
+  clickedBackground = false
+}
 
 function setCharAt(str,index,chr) {
   if(index > str.length-1) return str;
@@ -199,15 +290,20 @@ function submitGuess(save=true, checkWin=true) {
 
   let tWord = guess.toLowerCase()
 
+  let greens = 0
   for (let letter = 0; letter < guess.length; letter++) {
     if ((guess[letter] == _targetWord[letter]) || (guess[letter] == interfereWord[letter])) {
       tWord = setCharAt(tWord, letter, "@")
       if (guess[letter] == _targetWord[letter]) {
         _targetWord = setCharAt(_targetWord, letter, "-")
+        greens+=1
       } else if (guess[letter] == interfereWord[letter]) {
         interfereWord = setCharAt(interfereWord, letter, "-")
+        greens+=1
       }
-
+    if (greens == 5) {
+      showAlert("Not Quite...",  5000)
+    }
     }
   }
 
@@ -338,9 +434,10 @@ function checkWinLose(tiles) {
   }, "")
 
   if (guess === targetWord) {
-    showAlert("You Win", 5000)
+    showAlert("You Win", null)
     danceTiles(tiles)
     stopInteraction()
+    share.style.display = "initial"
     win()
     return
   }
@@ -349,6 +446,7 @@ function checkWinLose(tiles) {
   if ((remainingTiles.length === 0)) {
     showAlert(targetWord.toUpperCase(), null)
     stopInteraction()
+    share.style.display = "initial"
     lose()
   }
 }

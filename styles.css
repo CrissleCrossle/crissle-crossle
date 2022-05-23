@@ -1,5 +1,36 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
+:root {
+  --main-correct: hsl(115, 29%, 43%);
+  --main-wrong-location: hsl(49, 51%, 47%);
+  --main-wrong: hsl(240, 2%, 23%);
+  --main-interfere: hsl(215, 70%, 43%);
+
+  --default-correct: hsl(115, 29%, 43%);
+  --default-wrong-location: hsl(49, 51%, 47%);
+  --default-wrong: hsl(240, 2%, 23%);
+  --default-interfere: hsl(215, 70%, 43%);
+
+  --lightmode-default-correct: hsl(115, 29%, 50%);
+  --lightmode-default-wrong-location: hsl(49, 51%, 55%);
+  --lightmode-default-wrong: hsl(240, 2%, 48%);
+  --lightmode-default-interfere: hsl(215, 70%, 43%);
+
+  --contrast-correct: orangered;
+  --contrast-wrong-location: aquamarine;
+  --contrast-wrong: black;
+  --contrast-interfere: violet;
+
+  --correct: hsl(115, 29%, 43%);
+  --wrong-location: hsl(49, 51%, 47%);
+  --wrong: hsl(240, 2%, 23%);
+  --interfere: hsl(215, 70%, 43%);
+
+  --darkmode: rgb(17, 17, 18);
+  --lightmode: white;
+  --background: rgb(17, 17, 18);
+  --button-colour: white;
+}
 
 *, *::after, *::before {
   box-sizing: border-box;
@@ -10,8 +41,12 @@
   touch-action: manipulation;
 }
 
+div {
+  overflow-y: none;
+}
+
 body {
-  background-color: rgb(17, 17, 18);
+  background-color: var(--background);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -24,32 +59,89 @@ body {
   justify-content: center;
 }
 
-#rules {
-  display: block;
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  align-self: center;
-  text-align: center;
-  overflow-y: auto;
-  background-color: rgb(59, 59, 59);
+#share {
+  font-size: 2em;
   color: white;
-
+  background-color: var(--correct);
+  border-radius: 0.2em;
+  padding: 0.3em;
+  display: none;
 }
 
-.screen-overlay {
+#stats {
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+  justify-content: space-evenly;
+}
+
+.stats-numboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+#graph {
+  width: 60%;
+}
+
+.bar-container {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center;
+  margin-block: 0.5em;
+  padding: 0%;
+  height: 1.2em;
+}
+
+.bar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--wrong);
+  padding-right: 1em;
+  font-size: 0.8em;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.fullscreen-popup {
+  z-index: 100;
   visibility: hidden;
-  display: block;
-  position: absolute;
-  width: 80%;
-  height: 80%;
+  display: none;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   align-self: center;
   text-align: center;
-  overflow-y: auto;
-  background-color: rgb(59, 59, 59);
+  overflow-y: scroll;
+  background-color: rgb(17, 17, 18);
+  border: none;
+  justify-content: center;
   color: white;
   padding: 2em;
 }
+
+.screen-popup {
+  z-index: 99;
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  width: 50%;
+  height: 80%;
+  align-self: center;
+  text-align: center;
+  overflow-y: hidden;
+  background-color: rgb(17, 17, 18);
+  border-radius: 0.5em;
+  border: 0.2em solid white;
+  color: white;
+  padding: 1em;
+  
+  
+}
+
 
 .switch {
   position: relative;
@@ -64,41 +156,69 @@ body {
   height: 0;
 }
 
-.slider {
+.slider-colourblind {
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: hsl(115, 29%, 43%);
+  background-color: var(--correct);
   transition: .05s;
 }
 
-.slider:before {
+.slider-colourblind:before {
   position: absolute;
   content: "";
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: lightgrey;
   transition: .05s;
 }
 
-input:checked + .slider {
+input:checked + .slider-colourblind {
   background-color: orangered;
 }
 
-input:focus + .slider {
+input:focus + .slider-colourblind, input:checked + .slider-background {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked + .slider-colourblind:before, input:checked + .slider-background:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
+
+
+.slider-background {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  transition: .05s;
+}
+
+.slider-background:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: lightgrey;
+  transition: .05s;
+}
+
+input:checked + .slider-background {
+  background-color: white;
+}
+
 
 #top-bar {
   margin-top: 0;
@@ -113,7 +233,7 @@ input:checked + .slider:before {
   font-size: 3em;
   border: none;
   text-decoration: none;
-  color: white;
+  color: var(--button-colour);
 }
 
 #title {
@@ -140,18 +260,9 @@ input:checked + .slider:before {
   background-color: rgba(17, 17, 18, 0.8);
   position:absolute;
   margin: auto;
-  height: 100%;
+  height: 200%;
   width:100%;
   display: flex;
-}
-
-#share {
-  font-size: 2em;
-  color: white;
-  background-color: hsl(115, 29%, 43%);
-  border-radius: 0.2em;
-  margin: auto;
-  padding: 0.3em;
 }
 
 .key {
@@ -225,35 +336,16 @@ input:checked + .slider:before {
 
 }
 
-/*
+.help-grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  padding: 10px;
+  text-align: center;
+  gap: 0.25em;
+  vertical-align: middle;
+  margin-bottom: 0vh;
 
-.guess-grid {
-  float: left;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  flex-grow: 1;
-  grid-template-columns: repeat(5, 3em);
-  grid-template-rows: repeat(8, 3em);
-  gap: .25em;
-  margin-bottom: 1em;
-  margin-left:20%;
 }
-
-.interfere-grid {
-  float: right;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  flex-grow: 1;
-  grid-template-columns: repeat(5, 3em);
-  grid-template-rows: repeat(8, 3em);
-  gap: .25em;
-  margin-bottom: 1em;
-  margin-right: 20%;
-}
-
-*/
 
 .answer-box {
   display: grid;
@@ -273,7 +365,7 @@ input:checked + .slider:before {
   font-size: 1.5em;
   line-height: 1.75em;
   color: white;
-  border: .05em solid hsl(240, 2%, 23%);
+  border: .05em solid var(--wrong);
   width: 1.75em;
   height: 1.75em;
   text-transform: uppercase;
@@ -291,35 +383,24 @@ input:checked + .slider:before {
 
 .tile[data-state="wrong"] {
   border: none;
-  background-color: hsl(240, 2%, 23%);
+  background-color: var(--wrong);
 }
 
 .tile[data-state="wrong-location"] {
   border: none;
-  background-color: hsl(49, 51%, 47%);
+  background-color: var(--wrong-location);
 }
 
 .tile[data-state="correct"] {
   border: none;
-  background-color: hsl(115, 29%, 43%);
+  background-color: var(--correct);
 }
 
 .tile[data-state="interfere"] {
   border: none;
-  background-color: hsl(215, 70%, 43%);
+  background-color: var(--interfere);
 }
 
-.switched[data-state="interfere"] {
-  background-color: violet;
-}
-
-.switched[data-state="correct"] {
-  background-color: orangered;
-}
-
-.switched[data-state="wrong-location"] {
-  background-color: aquamarine;
-}
 
 .tile.shake {
   animation: shake 250ms ease-in-out;
@@ -391,7 +472,7 @@ input:checked + .slider:before {
   top: 10vh;
   left: 50vw;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -415,27 +496,46 @@ input:checked + .slider:before {
   opacity: 0;
 }
 
-@media only screen and (max-width: 125vh) {
+.top-bar-spacing {
+  padding-inline: 0.8em;
+}
+
+@media only screen and (max-width: 145vh) {
   .tile.title {
-    font-size: 1.25em;
+    font-size: 1em;
+  }
+  .screen-popup {
+    width: 70%;
+  }
+  .top-bar-spacing {
+    padding-inline: 0.5em;
+  }
+  .menu-button {
+    font-size: 2em;
   }
   }
 
 
-@media only screen and (max-width: 115vh) {
+@media only screen and (max-width: 150vh) {
   .tile.title {
-    font-size: 1.15em;
+    font-size: 1.3em;
   }
   }
   
 
-@media only screen and (max-width: 110vh) {
+@media only screen and (max-width: 130vh) {
   .tile.title {
-    font-size: 1.05em;
+    font-size: 1.1em;
   }
   }
 
-@media only screen and (max-width: 90vh) {
+@media only screen and (max-width: 110vh) {
+  .tile.title {
+    font-size: 0.9em;
+  }
+  }
+
+@media only screen and (max-width: 95vh) {
   .keyboard {
     width: 100%;
     grid-row-gap: .75em;
