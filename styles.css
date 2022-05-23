@@ -365,7 +365,7 @@ input:checked + .slider-background {
 .tile {
   font-size: 1.5em;
   line-height: 1.75em;
-  color: white;
+  color: var(--font-colour);
   border: .05em solid var(--wrong);
   width: 1.75em;
   height: 1.75em;

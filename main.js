@@ -363,6 +363,7 @@ function flipTile(tile, index, array, state, checkWin) {
   tile.addEventListener("transitionend", ()=>{
     tile.classList.remove("flip")
     tile.dataset.state = state
+    tile.style.color = "--font-colour"
     if (state == "interfere") {
       return
     }
