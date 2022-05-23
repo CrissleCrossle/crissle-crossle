@@ -1,6 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
-
 :root {
   --main-correct: hsl(115, 29%, 43%);
   --main-wrong-location: hsl(49, 51%, 47%);
@@ -40,6 +39,10 @@
 
 * {
   touch-action: manipulation;
+}
+
+div {
+  overflow-y: none;
 }
 
 body {
