@@ -24,8 +24,5 @@ document.getElementById("restart").onclick = () => {
 }
 
 win = lose = () => {
-  document.getElementById("hide-keyboard").style.visibility = "visible"
-  document.getElementById("restart").style.visibility = "visible"
-
-
+  document.getElementById("infinite-restart").style.visibility = "visible"
 }
