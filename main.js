@@ -38,121 +38,69 @@ var saveAfterGuess = true
 var loading = false
 const share = document.querySelector('#share');
 
-function switchColours(switchedColours) {
-  window.localStorage.setItem("colourblind", switchedColours)
+var lightmode = false
+var highcontrast = false
 
-  let s = getComputedStyle(document.documentElement)
+document.getElementById("title").querySelectorAll(".tile").forEach((element) => {
+  element.style.color = "white"
+})
 
-  document.documentElement.style.setProperty("--correct", switchedColours ? s.getPropertyValue("--contrast-correct") : s.getPropertyValue("--default-correct"))
-  document.documentElement.style.setProperty("--wrong-location", switchedColours ? s.getPropertyValue("--contrast-wrong-location") : s.getPropertyValue("--default-wrong-location"))
-  document.documentElement.style.setProperty("--interfere", switchedColours ? s.getPropertyValue("--contrast-interfere") : s.getPropertyValue("--default-interfere"))
-  document.documentElement.style.setProperty("--wrong", switchedColours ? s.getPropertyValue("--contrast-wrong") : s.getPropertyValue("--default-wrong"))
-
+function getCSSProperty(prop) {
+  return getComputedStyle(document.documentElement).getPropertyValue(prop)
 }
 
-function flipLightDark(switchedColours) {
-  let s = getComputedStyle(document.documentElement)
-  document.documentElement.style.setProperty("--correct", switchedColours ? s.getPropertyValue("--lightmode-default-correct") : s.getPropertyValue("--main-correct"))
-  document.documentElement.style.setProperty("--wrong-location", switchedColours ? s.getPropertyValue("--lightmode-default-wrong-location") : s.getPropertyValue("--main-wrong-location"))
-  document.documentElement.style.setProperty("--interfere", switchedColours ? s.getPropertyValue("--lightmode-default-interfere") : s.getPropertyValue("--main-interfere"))
-  document.documentElement.style.setProperty("--wrong", switchedColours ? s.getPropertyValue("--lightmode-default-wrong") : s.getPropertyValue("--main-wrong"))
+function setCSSPropertyRaw(prop, val) {
+  document.documentElement.style.setProperty(prop, val)
 }
 
-function switchBackground(switchedColours) {
-  window.localStorage.setItem("light", switchedColours)
-  
-  let s = getComputedStyle(document.documentElement)
-  let s2 = getComputedStyle(document.body)
-  let colourblind = window.localStorage.getItem("colourblind")
-  
-
-  document.body.style.setProperty("--background", switchedColours ? s2.getPropertyValue("--lightmode") : s2.getPropertyValue("--darkmode"))
-  document.documentElement.style.setProperty("--default-correct", switchedColours ? s.getPropertyValue("--lightmode-default-correct") : s.getPropertyValue("--main-correct"))
-  document.documentElement.style.setProperty("--default-wrong-location", switchedColours ? s.getPropertyValue("--lightmode-default-wrong-location") : s.getPropertyValue("--main-wrong-location"))
-  document.documentElement.style.setProperty("--default-interfere", switchedColours ? s.getPropertyValue("--lightmode-default-interfere") : s.getPropertyValue("--main-interfere"))
-  document.documentElement.style.setProperty("--default-wrong", switchedColours ? s.getPropertyValue("--lightmode-default-wrong") : s.getPropertyValue("--main-wrong"))
-  document.documentElement.style.setProperty("--font-colour", switchedColours ? "black" : "white")
-  
-  if (colourblind == "false") {
-    flipLightDark(switchedColours)
-  }
-
-  document.getElementById("title").querySelectorAll(".tile").forEach((element) => {
-    element.style.color = "white"
-  })
-
+function setCSSProperty(prop, val) {
+  document.documentElement.style.setProperty(prop, getCSSProperty(val))
 }
 
-let colourblind = window.localStorage.getItem("colourblind")
-if (colourblind == "true") {
-  switchColours(true)
-} else {
-  switchColours(false)
-}
 
-var clickedColourblind = false
+function updateColours() {
 
-if (window.localStorage.getItem("colourblind") == "true") {
-    document.getElementById("switch-colours").click()
+
+  setCSSProperty("--correct", lightmode ? (highcontrast ? "--contrast-light-correct" : "--light-default-correct") : (highcontrast ? "--contrast-correct" : "--default-correct"))
+  setCSSProperty("--wrong-location", lightmode ? (highcontrast ? "--contrast-light-wrong-location" : "--light-default-wrong-location") : (highcontrast ? "--contrast-wrong-location" : "--default-wrong-location"))
+  setCSSProperty("--interfere", lightmode ? (highcontrast ? "--contrast-light-interfere" : "--light-default-interfere") : (highcontrast ? "--contrast-interfere" : "--default-interfere"))
+  setCSSProperty("--wrong", lightmode ? (highcontrast ? "--contrast-light-wrong" : "--light-default-wrong") : (highcontrast ? "--contrast-wrong" : "--default-wrong"))
+  setCSSProperty("--background", lightmode ? "--light-background" : "default-background")
+  setCSSPropertyRaw("--font-colour", lightmode ? "black" : "white")
+
 }
 
 document.getElementById("switch-colours").onclick = () => {
     
-    if (clickedColourblind) {
-      return
-    }
-  
-    clickedColourblind = true
-
-    if (windedow.localStorage.getItem("colourblind") == "true") {
-        switchColours(false)
-    } else {
-        switchColours(true)
-
-    }
-  
+  highcontrast = !highcontrast
+  window.localStorage.setItem("colourblind", highcontrast)
+  updateColours()
   
 }
-  
-document.getElementById("switch-colours").onmouseup = () => {
-  clickedColourblind = false
-}
 
-
-let light = window.localStorage.getItem("light")
-if (light == "true") {
-  switchBackground(true)
-} else {
-  switchBackground(false)
-}
-
-var clickedBackground = false
-
-if (window.localStorage.getItem("light") == "true") {
-    document.getElementById("switch-background").click()
-}
-
-document.getElementById("switch-background").onclick = () => {
+document.getElementById("switch-light").onclick = () => {
     
-    if (clickedBackground) {
-      return
-    }
-  
-    clickedBackground = true
+  lightmode = !lightmode
+  window.localStorage.setItem("light", lightmode)
 
-    if (window.localStorage.getItem("light") == "true") {
-        switchBackground(false)
-    } else {
-        switchBackground(true)
-
-    }
-  
+  updateColours()
   
 }
+
+window.onload = () => {
+  if (window.localStorage.getItem("colourblind") == "true") {
+    document.getElementById("switch-colours").setAttribute("checked", "")
+    highcontrast = true
+  }
   
-document.getElementById("switch-background").onmouseup = () => {
-  clickedBackground = false
+  if (window.localStorage.getItem("light") == "true") {
+    document.getElementById("switch-light").setAttribute("checked", "")
+    lightmode = true
+  }
+
+  updateColours()
 }
+
 
 function setCharAt(str,index,chr) {
   if(index > str.length-1) return str;

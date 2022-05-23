@@ -37,8 +37,8 @@
 
 <div class="alert-container" data-alert-container></div>
 
-<div id="rules" class="fullscreen-popup" style="visibility: hidden; display: none;">
-  <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: fixed; right: 2%; top: 0%" onclick="document.getElementById('rules').style.visibility = 'hidden'; document.getElementById('rules').style.display = 'none'"></div>
+<div id="rules" class="fullscreen-popup" style="display: none;">
+  <div  id="exit-rules" class="bi-x" style="font-size: 3em; position: fixed; right: 2%; top: 0%" onclick="document.getElementById('rules').style.display = 'none'"></div>
   <div class="page">
 
     <div class="game-area">
@@ -152,25 +152,20 @@
   </div>
 </div>
   
-<div id="settings" class="screen-popup" style="visibility: hidden; justify-content: space-around;">
-  <div  id="exit-settings" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('settings').style.visibility = 'hidden'"></div>
+<div id="settings" class="screen-popup" style="justify-content: space-around; display: none;">
+  <div  id="exit-settings" class="bi-x" style="font-size: 3em; position: absolute; right: 0%; top: 0%" onclick="document.getElementById('settings').style.display = 'none'"></div>
 
   <div style="flex-direction: column; display: flex; align-items: center; justify-content: center;">
     <h2>Settings</h2>
     <div style="flex-direction: row; align-items: center; justify-content: space-around; display: flex;">
     <div>
       <div style="display:flex; align-items: center; justify-content: space-between;">
-        <h3 style="display:inline; color:white; padding-right: 1em; float:left;">High Contrast Mode</h3>
-        <label class="switch" id="switch-colours">
-          <input type="checkbox">
-          <span class="slider-colourblind"></span>
-        </label>
+        <h3>High Contrast Mode</h3>
+        <input class="toggle" type="checkbox" id="switch-colours" />
       </div>
       <div style="display:flex; align-items: center; justify-content: space-between;">
-        <h3 style="display:inline; color:white; padding-right: 1em; float:left;">Light Mode</h3>
-        <label class="switch" id="switch-background">
-          <input type="checkbox">
-          <span class="slider-background"></span>
+        <h3>Light Mode</h3>
+        <input class="toggle" type="checkbox" id="switch-light" />
       </div>
     </div>
     </label>
@@ -179,35 +174,35 @@
 
 </div>
 
-  <div id="top-bar">
-    <div style="display: flex; flex-direction: row;">
-      <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.visibility = 'visible'"></div>
-      <span class="top-bar-spacing"></span>
-      <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.visibility = 'visible'; document.getElementById('rules').style.display = 'inherit'; document.getElementById('settings').style.visibility = 'hidden';"></div>
-    </div>
+<div id="top-bar">
+  <div style="display: flex; flex-direction: row;">
+    <div class="bi-gear menu-button" onclick="document.getElementById('settings').style.display = 'inherit';"></div>
     <span class="top-bar-spacing"></span>
-    <div id="title">
-      <div class="tile title"  data-state="correct")>C</div>
-      <div class="tile title" data-state="correct")>R</div>
-      <div class="tile title" data-state="wrong-location">I</div>
-      <div class="tile title" data-state="correct")>S</div>
-      <div class="tile title" data-state="correct")>S</div>
-      <div class="tile title" data-state="correct")>L</div>
-      <div class="tile title" data-state="correct")>E</div>
-      <div class="tile title" data-state="interfere")>C</div>
-      <div class="tile title" data-state="interfere")>R</div>
-      <div class="tile title" data-state="interfere")>O</div>
-      <div class="tile title" data-state="interfere")>S</div>
-      <div class="tile title" data-state="interfere")>S</div>
-      <div class="tile title" data-state="interfere")>L</div>
-      <div class="tile title" data-state="interfere")>E</div>
-    </div>
-    <span class="top-bar-spacing"></span>
-    <div style="display: flex; flex-direction: row;">
-      <a style="visibility: hidden;" class="bi-bar-chart menu-button" onclick="document.getElementById('stats').style.visibility = 'visible'"></a>
-      <span class="top-bar-spacing"></span>
-      <a class="bi-clock menu-button" href="index"></a>
-    </div>
+    <div class="bi-question-circle menu-button" onclick="document.getElementById('rules').style.display = 'inherit'; document.getElementById('settings').style.display = 'none';"></div>
+  </div>
+  <span class="top-bar-spacing"></span>
+  <div id="title">
+    <div class="tile title"  data-state="correct")>C</div>
+    <div class="tile title" data-state="correct")>R</div>
+    <div class="tile title" data-state="wrong-location">I</div>
+    <div class="tile title" data-state="correct")>S</div>
+    <div class="tile title" data-state="correct")>S</div>
+    <div class="tile title" data-state="correct")>L</div>
+    <div class="tile title" data-state="correct")>E</div>
+    <div class="tile title" data-state="interfere")>C</div>
+    <div class="tile title" data-state="interfere")>R</div>
+    <div class="tile title" data-state="interfere")>O</div>
+    <div class="tile title" data-state="interfere")>S</div>
+    <div class="tile title" data-state="interfere")>S</div>
+    <div class="tile title" data-state="interfere")>L</div>
+    <div class="tile title" data-state="interfere")>E</div>
+  </div>
+  <span class="top-bar-spacing"></span>
+  <div style="display: flex; flex-direction: row;">
+    <a class="bi-bar-chart menu-button" style="visibility: hidden;"></a>
+  <span class="top-bar-spacing"></span>
+  <a class="bi-clock menu-button" href="index"></a>
+  </div>
 </div>
 
   <div class="game-area">

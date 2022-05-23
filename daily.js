@@ -120,9 +120,10 @@ win = () => {
   window.localStorage.setItem("pastGames", JSON.stringify(pastGames))
   configureGraph(pastGames, score)
 
-  if (document.getElementById('rules').style.visibility == 'hidden') {
+  if (document.getElementById('rules').style.display == 'none') {
     setTimeout(() => {
-      document.getElementById('settings').style.visibility = 'hidden', document.getElementById("stats").style.visibility = "visible"
+      document.getElementById('settings').style.display = 'none'
+      document.getElementById("stats").style.display = 'inherit'
     }, 1000) }
 
 }
@@ -134,9 +135,10 @@ lose = () => {
 
   configureGraph(pastGames)
 
-  if (document.getElementById('rules').style.visibility == 'hidden') {
+  if (document.getElementById('rules').style.display == 'none') {
     setTimeout(() => {
-      document.getElementById('settings').style.visibility = 'hidden', document.getElementById("stats").style.visibility = "visible"
+      document.getElementById('settings').style.display = 'none'
+      document.getElementById("stats").style.display = 'inherit'
     }, 1000) }
 
 }
