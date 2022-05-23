@@ -54,6 +54,8 @@ body {
   height: 100%;
   overflow-y: hidden;
   justify-content: center;
+  overscroll-behavior: none;
+  overflow-anchor: none;
 }
 
 #share {
