@@ -45,6 +45,10 @@ document.getElementById("title").querySelectorAll(".tile").forEach((element) => 
   element.style.color = "white"
 })
 
+document.getElementById("rules").querySelectorAll("[data-state]").forEach((element) => {
+  element.style.color = "white"
+})
+
 function getCSSProperty(prop) {
   return getComputedStyle(document.documentElement).getPropertyValue(prop)
 }

@@ -28,8 +28,8 @@
   --wrong: var(--default-wrong);
   --interfere: var(--default-interfere);
 
-  --light-background: white;
-  --default-background: rgb(17, 17, 18);
+  --light-background: 255, 255, 255;
+  --default-background: 17, 17, 18;
 
   --background: var(--default-background);
   --font-colour: white;
@@ -49,7 +49,7 @@ div {
 }
 
 body {
-  background-color: var(--background);
+  background-color: rgb(var(--background));
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -60,12 +60,11 @@ body {
   height: 100%;
   overflow-y: hidden;
   justify-content: center;
-  color: var(--font-colour);
 }
 
 #rules {
   color: var(--font-colour);
-  background-color: var(--background);
+  background-color: rgb(var(--background));
 }
 
 #share {
@@ -123,7 +122,7 @@ body {
   align-self: center;
   text-align: center;
   overflow-y: scroll;
-  background-color: var(--background);
+  background-color: rgb(var(--background));
   border: none;
   justify-content: center;
   color: var(--font-colour);
@@ -140,7 +139,7 @@ body {
   align-self: center;
   text-align: center;
   overflow-y: hidden;
-  background-color: var(--background);
+  background-color: rgb(var(--background));
   border-radius: 0.5em;
   border: 0.2em solid var(--font-colour);
   color: var(--font-colour);
