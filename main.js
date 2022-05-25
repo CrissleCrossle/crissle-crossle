@@ -235,6 +235,7 @@ function submitGuess(save=true, checkWin=true) {
 
   if (guess === "prnkl") {
     showAlert("What the...?", 5000)
+  }
 
   stopInteraction()
 
