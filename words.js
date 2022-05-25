@@ -15289,5 +15289,6 @@ const targetWords = [
     "rural",
     "shave",
     "prnkl",
+    "poger",
   ]
   
