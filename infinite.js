@@ -17,7 +17,7 @@ interfereWords.push("#####")
 
 startInteraction()
 
-document.getElementById("restart").onclick = () => {
+document.getElementById("restart", "re").onclick = document.getElementById("re").onclick = () => {
 
   location.reload()
 
@@ -27,5 +27,5 @@ win = lose = () => {
   document.getElementById("hide-keyboard").style.visibility = "visible"
   document.getElementById("restart").style.visibility = "visible"
 
-
+      
 }
