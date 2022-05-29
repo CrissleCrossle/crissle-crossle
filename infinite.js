@@ -17,7 +17,7 @@ interfereWords.push("#####")
 
 startInteraction()
 
-document.getElementById("restart", "re").onclick = document.getElementById("re").onclick = () => {
+document.getElementById("restart").onclick = document.getElementById("re").onclick = () => {
 
   location.reload()
 
