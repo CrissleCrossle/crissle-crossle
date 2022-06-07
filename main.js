@@ -40,6 +40,7 @@ const share = document.querySelector('#share');
 
 var lightmode = false
 var highcontrast = false
+var keyboardGrey = false
 
 document.getElementById("title").querySelectorAll(".tile").forEach((element) => {
   element.style.color = "white"
@@ -91,6 +92,15 @@ document.getElementById("switch-light").onclick = () => {
   
 }
 
+document.getElementById("switch-keyboard").onclick = () => {
+    
+  keyboardGrey = !keyboardGrey
+  window.localStorage.setItem("keyboardGrey", keyboardGrey)
+
+  setCSSPropertyRaw("--wrong-keyboard", keyboardGrey ? "51%" : "23%")
+  
+}
+
 window.onload = () => {
   if (window.localStorage.getItem("colourblind") == "true") {
     document.getElementById("switch-colours").setAttribute("checked", "")
@@ -102,7 +112,13 @@ window.onload = () => {
     lightmode = true
   }
 
+  if (window.localStorage.getItem("keyboardGrey") == "true") {
+    document.getElementById("switch-keyboard").setAttribute("checked", "")
+    keyboardGrey = true
+  }
+
   updateColours()
+  setCSSPropertyRaw("--wrong-keyboard", keyboardGrey ? "51%" : "23%")
 }
 
 

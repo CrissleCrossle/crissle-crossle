@@ -33,6 +33,8 @@
 
   --background: var(--default-background);
   --font-colour: white;
+
+  --wrong-keyboard: 23%:
 }
 
 *, *::after, *::before {
@@ -277,7 +279,7 @@ body {
 }
 
 .key.wrong {
-  --lightness: 23%;
+  --lightness: var(--wrong-keyboard);
 }
 
 .key.wrong-location {
