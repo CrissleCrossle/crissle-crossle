@@ -36,7 +36,6 @@ document.getElementById("share").onclick = () => {
   let tiles = guessGrid.querySelectorAll(".tile")
   for (let i = 0; i < tiles.length; i++) {
     if (!tiles[i].dataset.state) {
-      shareText = shareText.replace("p", String((i/5)))
       break
     } else {
       shareText = shareText.concat("", shareColours[tiles[i].dataset.state])
@@ -45,7 +44,12 @@ document.getElementById("share").onclick = () => {
       }
     }
   }
+  try {
+    shareText = shareText.replace("p", score)
+  } catch {
   shareText = shareText.replace("p", "X")
+  }
+  shareText = shareText.concat("", "crisslecrossle.com\n")
 
   navigator.clipboard.writeText(shareText)
   showAlert("Copied Result To Clipboard")
@@ -107,7 +111,7 @@ function configureGraph(data, current=null) {
 win = () => {
   share.style.display = "initial"
   let tiles = guessGrid.querySelectorAll(".tile")
-  let score = 8
+  score = 8
 
   for (let i = 0; i < tiles.length; i++) {
   if (!tiles[i].dataset.state) {
