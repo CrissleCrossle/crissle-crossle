@@ -31,6 +31,8 @@
   --light-background: 255, 255, 255;
   --default-background: 17, 17, 18;
 
+  --lightmode-offset: 0%;
+
   --background: var(--default-background);
   --font-colour: white;
 
@@ -255,9 +257,9 @@ body {
   background-color: hsl(
     var(--hue, 200),
     var(--saturation, 1%),
-    calc(var(--lightness-offset, 0%) + var(--lightness, 51%))
+    calc(var(--hover-offset, 0%) + var(--used-offset, 51%) + var(--lightmode-offset))
   );
-  color: white;
+  color: var(--font-colour);
   fill: white;
   text-transform: uppercase;
   border-radius: .25em;
@@ -275,23 +277,23 @@ body {
 }
 
 .key:hover, .key:focus {
-  --lightness-offset: 10%;
+  --hover-offset: 10%;
 }
 
 .key.wrong {
-  --lightness: var(--wrong-keyboard);
+  --used-offset: var(--wrong-keyboard);
 }
 
 .key.wrong-location {
   --hue: 49;
   --saturation: 51%;
-  --lightness: 47%;
+  --used-offset: 47%;
 }
 
 .key.correct {
   --hue: 115;
   --saturation: 29%;
-  --lightness: 43%;
+  --used-offset: 43%;
 }
 
 .game-area {

@@ -72,6 +72,7 @@ function updateColours() {
   setCSSProperty("--wrong", lightmode ? (highcontrast ? "--contrast-light-wrong" : "--light-default-wrong") : (highcontrast ? "--contrast-wrong" : "--default-wrong"))
   setCSSProperty("--background", lightmode ? "--light-background" : "default-background")
   setCSSPropertyRaw("--font-colour", lightmode ? "black" : "white")
+  setCSSPropertyRaw("--lightmode-offset", lightmode ? "30%" : "0%")
 
 }
 
@@ -101,20 +102,34 @@ document.getElementById("switch-keyboard").onclick = () => {
   
 }
 
+if (window.localStorage.length == 0) {
+  document.getElementById("rules").style.display = 'inherit'; //  document.getElementById("rules").style = "display: inherit";
+}
+
 window.onload = () => {
-  if (window.localStorage.getItem("colourblind") == "true") {
+  let localStorageCB = window.localStorage.getItem("colourblind")
+  if (localStorageCB == "true") {
     document.getElementById("switch-colours").setAttribute("checked", "")
     highcontrast = true
-  }
-  
-  if (window.localStorage.getItem("light") == "true") {
-    document.getElementById("switch-light").setAttribute("checked", "")
-    lightmode = true
+  } else if (localStorageCB == null) {
+    window.localStorage.setItem("colourblind", false)
   }
 
-  if (window.localStorage.getItem("keyboardGrey") == "true") {
+  let localStorageLM = window.localStorage.getItem("light")
+  if (localStorageLM == "true") {
+    document.getElementById("switch-light").setAttribute("checked", "")
+    lightmode = true
+  } else if (localStorageLM == null) {
+    window.localStorage.setItem("light", false)
+  }
+
+  let localStorageKG = window.localStorage.getItem("keyboardGrey")
+  if (localStorageKG == "true") {
     document.getElementById("switch-keyboard").setAttribute("checked", "")
     keyboardGrey = true
+
+  } else if (localStorageKG == null) {
+    window.localStorage.setItem("keyboardGrey", false)
   }
 
   updateColours()
