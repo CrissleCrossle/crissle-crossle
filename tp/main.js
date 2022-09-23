@@ -170,7 +170,7 @@ function saveGame() {
     let tile = guessGrid.children[c]
     newData.game.push(tile.dataset.letter)
   }
-  window.localStorage.setItem("game", JSON.stringify(newData))
+  window.localStorage.setItem("game-tp", JSON.stringify(newData))
 }
 
 
@@ -274,7 +274,7 @@ function submitGuess(save=true, checkWin=true) {
     saveGame()
   }
 
-  let filledLines = guessGrid.querySelectorAll("[data-letter]").length/5
+  let filledLines = guessGrid.querySelectorAll("[data-letter]").length/WORD_LENGTH
   let interfereWord = interfereWords[filledLines-1].toLowerCase()
   let _targetWord = targetWord.toLowerCase()
 

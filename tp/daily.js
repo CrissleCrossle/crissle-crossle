@@ -15,7 +15,7 @@ interfereWords.push("#####")
 
 startInteraction()
 
-let data = window.localStorage.getItem("game")
+let data = window.localStorage.getItem("game-tp")
 if (data) {
   data = JSON.parse(data)
   if (data.date == dayOffset) {
