@@ -40,7 +40,7 @@ const shareColours = {
 
 
 document.getElementById("share").onclick = () => {
-  let shareText = "Crissle Crossle " + String(dayOffset) + " p/8\n" 
+  let shareText = "Crissle Crossle toki pona " + String(dayOffset) + " p/8\n" 
   let tiles = guessGrid.querySelectorAll(".tile")
   for (let i = 0; i < tiles.length; i++) {
     if (!tiles[i].dataset.state) {
