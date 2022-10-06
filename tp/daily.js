@@ -63,7 +63,7 @@ document.getElementById("share").onclick = () => {
   showAlert("Copied Result To Clipboard")
 }
 
-var pastGames = window.localStorage.getItem("pastGames")
+var pastGames = window.localStorage.getItem("tp-pastGames")
 
 if (pastGames) {
   pastGames = JSON.parse(pastGames)
@@ -129,7 +129,7 @@ win = () => {
   }
 
   pastGames[String(dayOffset)] = String(score)
-  window.localStorage.setItem("pastGames", JSON.stringify(pastGames))
+  window.localStorage.setItem("tp-pastGames", JSON.stringify(pastGames))
   configureGraph(pastGames, score)
 
   if (document.getElementById('rules').style.display == 'none') {
@@ -143,7 +143,7 @@ win = () => {
 lose = () => {
   share.style.display = "initial"
   pastGames[String(dayOffset)] = "X"
-  window.localStorage.setItem("pastGames", JSON.stringify(pastGames))
+  window.localStorage.setItem("tp-pastGames", JSON.stringify(pastGames))
 
   configureGraph(pastGames)
 
