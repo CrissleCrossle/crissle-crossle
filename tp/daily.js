@@ -19,7 +19,7 @@ for (let i = 0; i < 7; i++) {
   interfereWords.push(word)
 }
 
-interfereWords.push("#####")
+interfereWords.push("####")
 
 startInteraction()
 
