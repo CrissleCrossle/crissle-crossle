@@ -123,7 +123,7 @@ win = () => {
 
   for (let i = 0; i < tiles.length; i++) {
   if (!tiles[i].dataset.state) {
-    score = i/5
+    score = i/4
     break
     }
   }
