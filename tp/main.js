@@ -31,7 +31,7 @@ const answerBox = document.querySelector("[data-answer-box]")
 const interfereGrid = document.querySelector("[data-interfere-grid]")
 const offsetFromDate = new Date(2022, 0, 1)
 const msOffset = Date.now() - offsetFromDate
-const dayOffset = 1//Math.floor(msOffset / 1000 / 60 / 60 / 24)
+const dayOffset = Math.floor(msOffset / 1000 / 60 / 60 / 24)
 var targetWord = ""
 const interfereWords = []
 var saveAfterGuess = true
@@ -422,7 +422,7 @@ function checkWinLose(tiles) {
   }, "")
 
   if (guess === targetWord) {
-    showAlert("You Win", null)
+    showAlert("sina pini pona", null)
     danceTiles(tiles)
     stopInteraction()
     win()

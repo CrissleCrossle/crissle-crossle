@@ -40,22 +40,22 @@ const shareColours = {
 
 
 document.getElementById("share").onclick = () => {
-  let shareText = "Crissle Crossle toki pona " + String(dayOffset) + " p/8\n" 
+  let shareText = "Crissle Crossle toki pona " + String(dayOffset) + " @/8\n" 
   let tiles = guessGrid.querySelectorAll(".tile")
   for (let i = 0; i < tiles.length; i++) {
     if (!tiles[i].dataset.state) {
       break
     } else {
       shareText = shareText.concat("", shareColours[tiles[i].dataset.state])
-      if ((i+1) % 5 == 0) {
+      if ((i+1) % 4 == 0) {
         shareText = shareText.concat("", "\n")
       }
     }
   }
   try {
-    shareText = shareText.replace("p", score)
+    shareText = shareText.replace("@", score)
   } catch {
-  shareText = shareText.replace("p", "X")
+  shareText = shareText.replace("@", "X")
   }
   shareText = shareText.concat("", "crisslecrossle.com\n")
 
