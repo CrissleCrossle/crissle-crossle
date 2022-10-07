@@ -288,7 +288,7 @@ function submitGuess(save=true, checkWin=true) {
         greens+=1
       }
     if (greens == WORD_LENGTH && guess != targetWord) {
-      showAlert("Not Quite...",  5000)
+      showAlert("sama ala...",  5000)
     }
     }
   }
