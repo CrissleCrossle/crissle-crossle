@@ -249,7 +249,7 @@ function submitGuess(save=true, checkWin=true) {
 
   const activeTiles = [...getActiveTiles()]
   if (activeTiles.length !== WORD_LENGTH) {
-    showAlert("Not enough letters")
+    showAlert("nanpa nimi li ike")
     shakeTiles(activeTiles)
     return
   }
@@ -259,7 +259,7 @@ function submitGuess(save=true, checkWin=true) {
   }, "")
 
   if (!dictionary.includes(guess)) {
-    showAlert("Not in word list")
+    showAlert("lon kulupu nimi ala")
     shakeTiles(activeTiles)
     return
   }

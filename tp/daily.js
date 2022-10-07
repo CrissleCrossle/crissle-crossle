@@ -60,7 +60,7 @@ document.getElementById("share").onclick = () => {
   shareText = shareText.concat("", "crisslecrossle.com\n")
 
   navigator.clipboard.writeText(shareText)
-  showAlert("Copied Result To Clipboard")
+  showAlert("ona li awen lon ilo sona")
 }
 
 var pastGames = window.localStorage.getItem("tp-pastGames")
