@@ -80,6 +80,17 @@ body {
   display: none;
 }
 
+#donate {
+  font-size: 2em;
+  color: white;
+  background-color: var(--wrong-location);
+  border-radius: 0.2em;
+  padding: 0.3em;
+  display: inline;
+  margin-right: 1em;
+  text-decoration: none;
+}
+
 #stats {
   flex-direction: column;
   align-items: center;
