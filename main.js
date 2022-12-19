@@ -41,6 +41,79 @@ const share = document.querySelector('#share');
 var lightmode = false
 var highcontrast = false
 var keyboardGrey = false
+var christmas = false
+
+const christmasTitle = `
+<div class="tile title"  data-state="correct")>C</div>
+<div class="tile title" data-state="correct")>R</div>
+<div class="tile title" data-state="wrong-location">I</div>
+<div class="tile title" data-state="correct")>S</div>
+<div class="tile title" data-state="correct")>S</div>
+<div class="tile title" data-state="correct")>M</div>
+<div class="tile title" data-state="correct")>A</div>
+<div class="tile title" data-state="correct")>S</div>
+<div class="tile title" data-state="interfere")>C</div>
+<div class="tile title" data-state="interfere")>R</div>
+<div class="tile title" data-state="interfere")>O</div>
+<div class="tile title" data-state="interfere")>S</div>
+<div class="tile title" data-state="interfere")>S</div>
+<div class="tile title" data-state="interfere")>M</div>
+<div class="tile title" data-state="interfere")>A</div>
+<div class="tile title" data-state="interfere")>S</div>
+`
+const normalTitle = `<div class="tile title"  data-state="correct")>C</div>
+<div class="tile title" data-state="correct")>R</div>
+<div class="tile title" data-state="wrong-location">I</div>
+<div class="tile title" data-state="correct")>S</div>
+<div class="tile title" data-state="correct")>S</div>
+<div class="tile title" data-state="correct")>L</div>
+<div class="tile title" data-state="correct")>E</div>
+<div class="tile title" data-state="interfere")>C</div>
+<div class="tile title" data-state="interfere")>R</div>
+<div class="tile title" data-state="interfere")>O</div>
+<div class="tile title" data-state="interfere")>S</div>
+<div class="tile title" data-state="interfere")>S</div>
+<div class="tile title" data-state="interfere")>L</div>
+<div class="tile title" data-state="interfere")>E</div>`
+
+
+var customDates = {
+  christmas:{
+    start: new Date("Dec 20"),
+    end: new Date("Dec 31"),
+    active: false,
+    update:() => {
+      
+      document.getElementById("christmas-toggle-container").style.display = "flex"
+
+      let isChristmas = window.localStorage.getItem("christmas")
+      if (isChristmas === null || isChristmas === "true") {
+        document.getElementById("switch-christmas").setAttribute("checked", "")
+        christmas = true
+        updateColours()
+      }
+
+    }
+  }
+}
+
+const todaysDate = new Date()
+
+function checkCustomDates() {
+
+  for (let custom of Object.keys(customDates)) {
+    let customDate = customDates[custom]
+    if (todaysDate.getMonth() === customDate.start.getMonth()) {
+      if (todaysDate.getDate() >= customDate.start.getDate() && todaysDate.getDate() <= customDate.end.getDate()) {
+        customDate.active = true
+        customDate.update()
+      }
+    }
+  }
+}
+
+checkCustomDates()
+
 
 document.getElementById("title").querySelectorAll(".tile").forEach((element) => {
   element.style.color = "white"
@@ -66,14 +139,30 @@ function setCSSProperty(prop, val) {
 function updateColours() {
 
 
-  setCSSProperty("--correct", lightmode ? (highcontrast ? "--contrast-light-correct" : "--light-default-correct") : (highcontrast ? "--contrast-correct" : "--default-correct"))
-  setCSSProperty("--wrong-location", lightmode ? (highcontrast ? "--contrast-light-wrong-location" : "--light-default-wrong-location") : (highcontrast ? "--contrast-wrong-location" : "--default-wrong-location"))
-  setCSSProperty("--interfere", lightmode ? (highcontrast ? "--contrast-light-interfere" : "--light-default-interfere") : (highcontrast ? "--contrast-interfere" : "--default-interfere"))
-  setCSSProperty("--wrong", lightmode ? (highcontrast ? "--contrast-light-wrong" : "--light-default-wrong") : (highcontrast ? "--contrast-wrong" : "--default-wrong"))
-  setCSSProperty("--background", lightmode ? "--light-background" : "default-background")
-  setCSSPropertyRaw("--font-colour", lightmode ? "black" : "white")
-  setCSSPropertyRaw("--lightmode-offset", lightmode ? "30%" : "0%")
+  setCSSProperty("--correct", christmas ? "--christmas-correct" : lightmode ? (highcontrast ? "--contrast-light-correct" : "--light-default-correct") : (highcontrast ? "--contrast-correct" : "--default-correct"))
+  setCSSProperty("--wrong-location", christmas ? "--christmas-wrong-location" : lightmode ? (highcontrast ? "--contrast-light-wrong-location" : "--light-default-wrong-location") : (highcontrast ? "--contrast-wrong-location" : "--default-wrong-location"))
+  setCSSProperty("--interfere", christmas ? "--christmas-interfere" : lightmode ? (highcontrast ? "--contrast-light-interfere" : "--light-default-interfere") : (highcontrast ? "--contrast-interfere" : "--default-interfere"))
+  setCSSProperty("--wrong", christmas ? "--light-default-wrong" : (lightmode ? (highcontrast ? "--contrast-light-wrong" : "--light-default-wrong") : (highcontrast ? "--contrast-wrong" : "--default-wrong")))
+  setCSSProperty("--background", christmas ? "default-background" : (lightmode ? "--light-background" : "default-background"))
+  setCSSPropertyRaw("--font-colour", christmas ? "white" : (lightmode ? "black" : "white"))
+  setCSSPropertyRaw("--lightmode-offset", christmas ? "0%" : (lightmode ? "30%" : "0%"))
+  setCSSProperty("--background-image", christmas ? "--christmas-background" : "none")
+  setCSSPropertyRaw("--show-snowflakes", christmas ? "initial" : "none")
 
+  if (christmas) {
+    document.getElementById("title").innerHTML = christmasTitle;
+    document.getElementById("title").setAttribute("style", "grid-template-columns: repeat(16, auto)");
+  } else {
+    document.getElementById("title").innerHTML = normalTitle;
+    document.getElementById("title").setAttribute("style", "grid-template-columns: repeat(14, auto)");
+  }
+
+}
+
+document.getElementById("switch-christmas").onclick = () => {
+  christmas = !christmas
+  window.localStorage.setItem("christmas", christmas)
+  updateColours()
 }
 
 document.getElementById("switch-colours").onclick = () => {
@@ -270,11 +359,15 @@ function submitGuess(save=true, checkWin=true) {
 
   stopInteraction()
 
+
   if (save && saveAfterGuess) {
     saveGame()
   }
 
   let filledLines = guessGrid.querySelectorAll("[data-letter]").length/5
+  if (Object.keys(customDates).includes("aprilfools") && customDates.aprilfools.active) {
+    interfereWords[filledLines-1] = guess
+  }
   let interfereWord = interfereWords[filledLines-1].toLowerCase()
   let _targetWord = targetWord.toLowerCase()
 

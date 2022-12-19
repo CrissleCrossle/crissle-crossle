@@ -1,6 +1,18 @@
+
+customDates.aprilfools = {
+  start: new Date("Apr 1"),
+  end: new Date("Apr 1"),
+  active: false,
+  update:() => {
+    targetWord = "APRIL FOOLS"
+  }
+}
+
 let tempInterfere = targetWords
 
 targetWord = targetWords[dayOffset]
+
+checkCustomDates()
 
 tempInterfere.splice(dayOffset, 1)
 
