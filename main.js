@@ -61,20 +61,21 @@ const christmasTitle = `
 <div class="tile title" data-state="interfere")>A</div>
 <div class="tile title" data-state="interfere")>S</div>
 `
-const normalTitle = `<div class="tile title"  data-state="correct")>C</div>
-<div class="tile title" data-state="correct")>R</div>
-<div class="tile title" data-state="wrong-location">I</div>
-<div class="tile title" data-state="correct")>S</div>
-<div class="tile title" data-state="correct")>S</div>
-<div class="tile title" data-state="correct")>L</div>
-<div class="tile title" data-state="correct")>E</div>
-<div class="tile title" data-state="interfere")>C</div>
-<div class="tile title" data-state="interfere")>R</div>
-<div class="tile title" data-state="interfere")>O</div>
-<div class="tile title" data-state="interfere")>S</div>
-<div class="tile title" data-state="interfere")>S</div>
-<div class="tile title" data-state="interfere")>L</div>
-<div class="tile title" data-state="interfere")>E</div>`
+const normalTitle = `
+<div class="tile title" data-state="correct" )="" style="color: white;">C</div>
+<div class="tile title" data-state="correct" )="" style="color: white;">R</div>
+<div class="tile title" data-state="wrong-location" style="color: white;">I</div>
+<div class="tile title" data-state="correct" )="" style="color: white;">S</div>
+<div class="tile title" data-state="correct" )="" style="color: white;">S</div>
+<div class="tile title" data-state="correct" )="" style="color: white;">L</div>
+<div class="tile title" data-state="correct" )="" style="color: white;">E</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">C</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">R</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">O</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">S</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">S</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">L</div>
+<div class="tile title" data-state="interfere" )="" style="color: white;">E</div>`
 
 
 var customDates = {
@@ -138,6 +139,13 @@ function setCSSProperty(prop, val) {
 
 function updateColours() {
 
+  if (christmas) {
+    document.getElementById("title").innerHTML = christmasTitle;
+    document.getElementById("title").setAttribute("style", "grid-template-columns: repeat(16, auto)");
+  } else {
+    document.getElementById("title").innerHTML = normalTitle;
+    document.getElementById("title").setAttribute("style", "grid-template-columns: repeat(14, auto)");
+  }
 
   setCSSProperty("--correct", christmas ? "--christmas-correct" : lightmode ? (highcontrast ? "--contrast-light-correct" : "--light-default-correct") : (highcontrast ? "--contrast-correct" : "--default-correct"))
   setCSSProperty("--wrong-location", christmas ? "--christmas-wrong-location" : lightmode ? (highcontrast ? "--contrast-light-wrong-location" : "--light-default-wrong-location") : (highcontrast ? "--contrast-wrong-location" : "--default-wrong-location"))
@@ -148,14 +156,8 @@ function updateColours() {
   setCSSPropertyRaw("--lightmode-offset", christmas ? "0%" : (lightmode ? "30%" : "0%"))
   setCSSProperty("--background-image", christmas ? "--christmas-background" : "none")
   setCSSPropertyRaw("--show-snowflakes", christmas ? "initial" : "none")
+  setCSSPropertyRaw("--christmas-scalar", christmas ? "0.7" : "1")
 
-  if (christmas) {
-    document.getElementById("title").innerHTML = christmasTitle;
-    document.getElementById("title").setAttribute("style", "grid-template-columns: repeat(16, auto)");
-  } else {
-    document.getElementById("title").innerHTML = normalTitle;
-    document.getElementById("title").setAttribute("style", "grid-template-columns: repeat(14, auto)");
-  }
 
 }
 

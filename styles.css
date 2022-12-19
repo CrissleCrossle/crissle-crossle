@@ -28,6 +28,7 @@
   --christmas-interfere: hsl(1, 57%, 47%);
   --christmas-background: linear-gradient(rgb(0, 0, 0) 5%, rgb(255, 255, 255));
   --show-snowflakes: none;
+  --christmas-scalar: 1;
 
   --correct: var(--default-correct);
   --wrong-location: var(--default-wrong-location);
@@ -535,20 +536,20 @@ body {
 
 @media only screen and (max-width: 150vh) {
   .tile.title {
-    font-size: 1.3em;
+    font-size: calc(var(--christmas-scalar) * 1.3em);
   }
   }
   
 
 @media only screen and (max-width: 130vh) {
   .tile.title {
-    font-size: 1.1em;
+    font-size: calc(var(--christmas-scalar) * 1.1em);
   }
   }
 
 @media only screen and (max-width: 110vh) {
   .tile.title {
-    font-size: 0.9em;
+    font-size: calc(var(--christmas-scalar) * 0.9em);
   }
   }
 
