@@ -81,7 +81,7 @@ const normalTitle = `
 var customDates = {
   christmas:{
     start: new Date("Dec 20"),
-    end: new Date("Dec 31"),
+    end: new Date("Dec 25"),
     active: false,
     update:() => {
       
